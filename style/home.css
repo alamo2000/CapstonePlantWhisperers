@@ -1,0 +1,79 @@
+
+h1{
+    font-size: 80px; /* Font size for the title */
+    color: #9feea0d3;  /* Text color (white) */
+    text-shadow: 5px 5px 5px #000000;
+    font-family:  "Trebuchet MS";
+}
+
+h2{
+    font-size: 40px;
+    text-shadow: 5px 5px 5px #000000;
+    color: #9feea0fd;
+    text-align: center;
+    font-family:  "Trebuchet MS";
+}
+
+h3{
+    text-shadow: 2px 2px 2px #000000; 
+}
+    
+h4{
+    padding: 10px;
+    font-size: 20px;
+    text-shadow: 2px 2px 2px #000000; 
+    color: rgb(253, 255, 253);
+}
+
+p{
+    font-size: 18px;
+    color: rgba(9, 37, 9, 0.856);
+}
+
+
+.title{
+    background-color: #052513eb; /*background-color: #053f43da;*/
+}
+
+body {
+    font-family:  "Trebuchet MS", Tahoma, sans-serif;
+    margin: 5px;
+}
+
+.light{
+    background-color:	rgb(0, 153, 77);
+    color: white;
+    position: left;
+
+}
+
+.dark{
+
+    background-color: #094f27;
+    color: white;
+}
+
+.welcome{
+    width: 95%; /* Set a maximum width for the login container */
+    height: 20%;
+    margin: 0 center;
+    background-color: #3ba34ba5; /* Semi-transparent green background for better readability */
+    padding: 5px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 19, 4, 0.673);
+    text-align: center;
+    border-color: #072e18;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 20px;
+    color: white !important;
+    text-shadow: 0.5px 0.5px 0.5px #196c0bd4; 
+}
+
+.backgroundDark{
+    background-color: #072e18;
+}
+
+/* Rounded border */
+hr.rounded {
+    border-top: 3px dotted  #11512d94;;
+  }

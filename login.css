@@ -1,0 +1,109 @@
+body {
+    background-image: url('images/leaf.avif'); /* Replace 'plant_background.jpg' with your actual background image */
+    background-size: cover;
+    font-family:  "Trebuchet MS", Tahoma, sans-serif;
+    margin: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.row{
+  content: "";
+  display: table;
+  clear: both;
+}
+.column{
+    padding: 20px;
+    background-color: #053f43da;
+    position: relative;
+
+
+
+}
+.title {
+    text-align: center; /* Center-align the text */
+    padding: 10px;/* Add padding to the title */
+    color: #ffffff; /* Text color (white) */
+    position: fixed;/* Fix the title container */
+    top: 0; /* Position it at the top of the viewport */
+    left: 0; /* Align it to the left */
+    right: 0; /* Align it to the right */
+    background-color: #052513eb; /*background-color: #053f43da;*/
+    /* border-radius: 30px; */
+    box-shadow: 20px 20px 20px 20px rgba(0, 19, 4, 0.673);
+
+}
+
+.title h1 {
+    font-size: 70px; /* Font size for the title */
+    color: #9feea0b3;  /* Text color (white) */
+    text-shadow: 5px 5px 5px #000000;
+
+}
+
+a {
+    color: #89e5aa;
+}
+
+.login-container {
+    width: 320px; /* Set a maximum width for the login container */
+    height: 380px;
+    margin: 0 center;
+    position: fixed;
+    top: 35%; /* Position it at the top of the viewport */
+    left: 40%; /* Align it to the left */
+    background-color:	#339933b1; /* Semi-transparent green background for better readability */
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 20px 20px 20px 20px rgba(0, 19, 4, 0.673);
+    text-align: center;
+    border-color: #052513dd;
+    border-style: solid;
+    border-width: 6px;
+}
+
+.login-container h1 {
+    font-size: 45px;
+    margin-bottom: 30px;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px #000000;
+
+
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input {
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    
+}
+
+.login-button {
+    /*background-color: #053f43da;*/
+    background-color:#07331be4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #17ca59;
+}
+
+p{
+    font-size: 18px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <title>Login and Signup</title>
+
+</head>
+<body>
+
+    <div class="row">
+
+            <div class="title">
+                <h1 >  Plant Whisperers</h1>
+            </div>
+
+
+
+            <div class="login-container">
+                <h1>Login </h1>
+                <div id="login-form">
+                    <form class="login-form">
+                        <input class="login-input" type="text" id="username" placeholder="Username" required>
+                        <input class="login-input" type="password" id="password" placeholder="Password" required>
+                        <br>
+
+                        <button class="login-button" type="submit" onclick="login()">Submit</button>
+
+                    </form>
+                </div>
+                <div id="signup-form" style="display: none;">
+                    <form class="login-form" onsubmit="return validateSignup()">
+                        <input class="login-input" type="text" id="new-username" placeholder="New Username" required>
+                        <input class="login-input" type="password" id="new-password" placeholder="New Password" required>
+                        <small>Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.</small>
+                        <button class="login-button" type="submit" onclick="toggleforns()">Sign Up</button>
+                    </form>
+                </div>
+                <br>
+                <p style="color: rgb(7, 43, 14);">Don't have an account? <a href="javascript:void(0);" onclick="toggleForms()"><b>Sign up here </b></a></p>
+            </div>
+
+    </div>
+
+    <script>
+        function login() {
+            // You can add your login logic here
+            // For this example, we'll just simulate a successful login
+            // const username = document.getElementById("username").value;
+            // const password = document.getElementById("password").value;
+
+            // if (username === "your_username" && password === "your_password") {
+            //     // Redirect to the home page
+            window.location.href = "home.html"; // Replace with the actual home page URL
+            // } else {
+            //     alert("Login failed. Please check your username and password or create an account");
+            // }
+        }
+
+
+        function toggleForms() {
+            const loginForm = document.getElementById("login-form");
+            const signupForm = document.getElementById("signup-form");
+            if (signupForm.style.display === "none") {
+                loginForm.style.display = "none";
+                signupForm.style.display = "block";
+            } else {
+                loginForm.style.display = "block";
+                signupForm.style.display = "none";
+            }
+        }
+
+        function validateSignup() {
+            const newPassword = document.getElementById("new-password").value;
+            if (newPassword.length < 8 || !/[A-Z]/.test(newPassword) || !/[a-z]/.test(newPassword) || !/[0-9]/.test(newPassword)) {
+                alert("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

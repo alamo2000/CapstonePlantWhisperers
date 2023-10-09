@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Help page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="style/help.css" /> 
+</head>
+<body id="myPage">
+
+<!-- Navbar -->
+<div class="w3-top">
+  <!-- <div class="navbar"> -->
+  <div class="w3-bar w3-theme-d3 w3-left-align">
+    <!-- Home button -->
+    <a href="home.html" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
+    <a href="plants.html" class="w3-bar-item w3-button w3-hide-small w3-hover-green">My Plants</a>
+    <div class="w3-dropdown-hover w3-hide-small ">
+    <button class="w3-button " title="Notifications">Settings <i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a href="blank.html" class="w3-bar-item w3-button">Notification Peferences</a>
+      <a href="help.html" class="w3-bar-item w3-button">Help</a>
+      <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
+      <a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
+    </div>
+  
+  </div>
+
+ </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-theme-d4 w3-hide w3-hide-large w3-hide-medium">
+    
+    <button class="w3-button " title="Notifications">Menu <i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a href="plant.html" class="w3-bar-item w3-button">My Plants</a>
+      <a href="#" class="w3-bar-item w3-button">Water Peferences</a>
+      <a href="#" class="w3-bar-item w3-button">Help</a>
+      <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
+      <a href="login.html" class="w3-bar-item w3-button w3-right">Log out</a>
+    </div>
+  </div>
+</div>
+
+<!-- Image Header -->
+<div class="w3-display-container w3-center title w3-animate-opacity ">
+    <!-- background image -->
+  <img src="images/wet.jpeg" alt="boat" style="width:100%;min-height:350px;max-height:400px;opacity:0.5">
+  <div class="w3-container w3-display-middle w3-margin-bottom" >
+     <h1 class="w3-margin ">Plants Whisperers</h1>
+   </div>
+</div>
+
+<div id="messagePage" class="w3-row-padding w3-padding-64 backgroundDark" id="work">
+<br>
+
+<div class="formContainer w3-theme-d3">
+<h2 class="to-animate">OUR HELP PAGE</h2>
+<p>We are sorry you are experiencing problems. Below are some common potential problems. Click on Error to see how to fix it. If the problems are not listed below contact us at: <b>capstoneEmail@gmail.com </b> </p>
+            
+<br>
+<button class="collapsible">Error: Empty water tank </button>
+<div class="content">
+    <span>-> Fill water tank with water up to max line <br> -> Check if water tube is in the water tank</span>
+ </div>
+<br>
+<button class="collapsible">Error: Device disconnected </button>
+<div class="content">
+   <span> -> Check wires, pump, and tank <br>
+          -> Check wifi connection</span>
+</div>
+<br>
+<button class="collapsible">Error: Watering unsucessfull  </button>
+<div class="content">
+ <span>-> Change watering preference to manual  <br>-> Check sensor connections</span>
+</div>
+</div>
+
+        
+</section>
+</div>
+
+<footer class="w3-container w3-padding-32 w3-theme-d3 w3-center">
+
+</footer>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
+</script>
+
+</body>
+</html>
+
