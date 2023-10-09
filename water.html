@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="style/help.css" /> 
+<link rel="stylesheet" type="text/css" href="style/water.css" /> 
 </head>
 <body id="myPage">
 
@@ -58,52 +58,59 @@
 <div id="messagePage" class="w3-row-padding w3-padding-64 backgroundDark" id="work">
 <br>
 
+<section>
 <div class="formContainer w3-theme-d3">
-<h2 class="to-animate">OUR HELP PAGE</h2>
-<p>We are sorry you are experiencing problems. Below are some common potential problems. Click on Error to see how to fix it. If the problems are not listed below contact us at: <b>capstoneEmail@gmail.com </b> </p>
-            
-<br>
-<button class="collapsible">Error: Empty water tank </button>
-<div class="content">
-    <span>-> Fill water tank with water up to max line <br> -> Check if water tube is in the water tank</span>
- </div>
-<br>
-<button class="collapsible">Error: Device disconnected </button>
-<div class="content">
-   <span> -> Check wires, pump, and tank <br>
-          -> Check wifi connection</span>
-</div>
-<br>
-<button class="collapsible">Error: Watering unsucessfull  </button>
-<div class="content">
- <span>-> Change watering preference to manual  <br>-> Check sensor connections</span>
-</div>
-</div>
+<h2 class="to-animate">WATER PREFERENCES</h2>
+<p>Here you can customize your water setting based on your need these setting can also help turn off any sensors that might not be work </b> </p>
+
+
+
+<div class="input">
+  <span class="label">Microphone</span>
+  <label class="toggle">
+    <input class="toggle-checkbox" type="checkbox" checked>
+    <div class="toggle-switch"></div>
+    <span class="toggle-label">ON</span>
+  </label>
+</div> 
+  
+
+<div class="input">
+  <span class="label">Moisure Sensor</span>
+  <label class="toggle">
+    <input class="toggle-checkbox" type="checkbox" checked>
+    <div class="toggle-switch"></div>
+    <span class="toggle-label">ON</span>
+  </label>
+</div> 
+
+<div class="input">
+  <span class="label">Manual Trigger</span>
+  <label class="toggle">
+    <input class="toggle-checkbox" type="checkbox" checked>
+    <div class="toggle-switch"></div>
+    <span class="toggle-label">ON</span>
+  </label>
+</div> 
+  
+
+<div class="input">
+  <span class="label">Automatic Trigger</span>
+  <label class="toggle">
+    <input class="toggle-checkbox" type="checkbox" checked>
+    <div class="toggle-switch"></div>
+    <span class="toggle-label">ON</span>
+  </label>
+</div> 
+
 
         
 </section>
 </div>
 
 <footer class="w3-container w3-padding-32 w3-theme-d3 w3-center">
-
 </footer>
 
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-    
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight){
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        } 
-      });
-    }
-</script>
 
 </body>
 </html>
