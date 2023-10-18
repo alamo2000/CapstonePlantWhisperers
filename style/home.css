@@ -26,7 +26,7 @@ h4{
 }
 
 p{
-    font-size: 18px;
+    font-size: 25px;
     color: rgba(9, 37, 9, 0.856);
 }
 
@@ -38,6 +38,7 @@ p{
 body {
     font-family:  "Trebuchet MS", Tahoma, sans-serif;
     margin: 5px;
+    background-color: #052513eb;
 }
 
 .light{

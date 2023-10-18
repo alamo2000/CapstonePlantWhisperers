@@ -38,14 +38,15 @@ p{
 body {
     font-family:  "Trebuchet MS", Tahoma, sans-serif;
     margin: 5px;
+    background-color: #052513eb;
 }
 
 
 /* rectangular border around form */
 .formContainer{
 
-    width: 45%; /* Set a maximum width for the login container */
-    height: 90%;
+    width: 40%; /* Set a maximum width for the login container */
+    height: 60%;
     margin: 10px center;
     position: relative;
     left: 28%;
@@ -67,7 +68,20 @@ body {
     border-radius: 20px;
     font-size: 16px;
     width: 100%;
+    color: white !important;
     background-color: #07331b88;
+}
+
+/* Temp Input field */
+.temp-input {
+    margin: 2px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    width: 50%;
+    color: white !important;
+    background-color: #07331b88 !important;
 }
 
 .button {
@@ -99,7 +113,7 @@ body {
 .select-selected {
     background-color: #07331b88;
     border-radius: 20px;
-    color: rgba(113, 162, 113, 0.821);
+    color: rgba(244, 248, 244, 0.821);
 }
 
 /*style the arrow inside the select element:*/
@@ -121,10 +135,10 @@ body {
 
 /*style the items (options), including the selected item:*/
 .select-items div,.select-selected {
-color: rgba(144, 206, 144, 0.821);;
+    color:rgba(113, 162, 113, 0.821);
     padding: 8px 16px;
     border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    border-color: transparent transparent rgba(241, 237, 237, 0.1) transparent;
     cursor: pointer;
     user-select: none;
 }
@@ -133,6 +147,7 @@ color: rgba(144, 206, 144, 0.821);;
 .select-items {
     position: absolute;
     background-color: #052513;
+    text-align: left;
     top: 100%;
     left: 0;
     right: 0;
@@ -156,5 +171,37 @@ color: rgba(144, 206, 144, 0.821);;
 }
 
 
+ul{
+    list-style:none;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    justify-content:center;
+    width:25vw;
+  
+  }
+  ul li{
+    padding:1em 2em .8em 2em;
+    border:1px solid black;
+  
+  }
 
+  th{
+    background-color: #33993384;
+    height: 5%;
+    padding: 15px;
+    font-size: 15px;
+    color: rgba(106, 158, 106, 0.931);
+    border: 1px solid white;
+    text-align: center;
+}
 
+table, td{ 
+    background-color:#072e18;
+    height:10%;
+    padding:5px;
+    font-size: 15px;
+    color: white;
+    border: 1px solid white;
+    text-align:center;
+    border-radius: 10p;
+} 

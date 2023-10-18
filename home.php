@@ -11,8 +11,14 @@
 </head>
 <body id="myPage">
 
+<?php
+  if(isset($_COOKIE['user']))
+  {
+?>
+
+
 <!-- Sidebar on click -->
-<nav class="w3-sidebar w3-bar-block w3-theme-d4 w3-card w3-animate-top w3-xxlarge" style="display:none;z-index:2" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-theme-d4 w3-card w3-animate-top w3-xxxlarge" style="display:none;z-index:2" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-display-topright w3-theme-d1">Close
     <i class="fa fa-remove"></i>
   </a>
@@ -24,9 +30,9 @@
 <div class="w3-top">
 <div class="w3-bar w3-theme-d3 w3-left-align">
   <!-- Home button -->
-  <a href="home.html" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
+  <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
   <!-- My plants tab -->
-  <a href="plants.html" class="w3-bar-item w3-button w3-hide-small w3-hover-green">My Plants</a>
+  <a href="plants.php" class="w3-bar-item w3-button w3-hide-small w3-hover-green">My Plants</a>
   <!-- Setting drop down menu -->
   <div class="w3-dropdown-hover w3-hide-small ">
   <button class="w3-button " title="Notifications">Settings <i class="fa fa-caret-down"></i></button>
@@ -34,8 +40,9 @@
     <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
     <a href="help.html" class="w3-bar-item w3-button">Help</a>
     <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
-    <a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
+    <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
   </div>
+  
 </div>
 
 </div>
@@ -45,12 +52,12 @@
     
     <button class="w3-button " title="Notifications">Menu <i class="fa fa-caret-down"></i></button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-      <a href="water.html" class="w3-bar-item w3-button">My Plants</a>
-      <a href="#work" class="w3-bar-item w3-button">Team</a>
-      <a href="blank.html" class="w3-bar-item w3-button">Water Peferences</a>
+      <a href="plants.php" class="w3-bar-item w3-button">My Plants</a>
+      <a href="#team" class="w3-bar-item w3-button">Team</a>
+      <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
       <a href="help.html" class="w3-bar-item w3-button">Help</a>
       <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
-      <a href="login.html" class="w3-bar-item w3-button w3-right">Log out</a>
+      <a href="login.php" class="w3-bar-item w3-button w3-right">Log out</a>
     </div>
   </div>
 </div>
@@ -60,7 +67,12 @@
 <!-- Image Header -->
 <div class="w3-display-container w3-center title w3-animate-opacity ">
     <!-- background image -->
+  <br>
+  <h4 style="text-align: left;">Welcome, <font color="Green" style="font-style:verdana; "><?php echo $_COOKIE['user'] ?></font></h4>
   <img src="images/wet.jpeg" alt="boat" style="width:100%;min-height:350px;max-height:400px;opacity:0.5">
+
+
+
   <div class="w3-container w3-display-middle w3-margin-bottom" >
     <h1 class="w3-margin ">Plants Whisperers</h1>
     <!-- get started button  -->
@@ -89,7 +101,7 @@
 
 
 <!-- Virtual Green House -->
-<div class="w3-row-padding w3-padding-64 w3-theme-d5" id="work">
+<div class="w3-row-padding w3-padding-64 w3-theme-d5" id="plants">
 
 <div class="w3-quarter">
 <h2>MY PLANTS</h2>
@@ -176,35 +188,35 @@
 
 <!--Our Team Container -->
 <div class="w3-container w3-theme-d1 w3-padding-64 w3-center" id="team">
-<h2>OUR TEAM RESPONSIBILTIES</h2>
+  <h2>OUR TEAM RESPONSIBILTIES</h2>
 
-<div class="w3-row"><br>
+  <div class="w3-row"><br>
 
-<div class="w3-quarter">
-  <img src="images/alex.png" alt="Boss" style="width:45%; " class="w3-circle w3-hover-opacity">
-      <h3>Alex Morris</h3>
-  <p>User Interface lead</p>
-</div>
+    <div class="w3-quarter">
+      <img src="images/alex.png" alt="Boss" style="width:45%; " class="w3-circle w3-hover-opacity">
+          <h3>Alex Morris</h3>
+      <p>User Interface lead</p>
+    </div>
 
-<div class="w3-quarter">
-  <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Kate Van Meter</h3>
-  <p>Embedded lead</p>
-</div>
+    <div class="w3-quarter">
+      <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <h3>Kate Van Meter</h3>
+      <p>Embedded lead</p>
+    </div>
 
-<div class="w3-quarter">
-  <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Audrey Swart</h3>
-  <p>Water Mechanism lead</p>
-</div>
+    <div class="w3-quarter">
+      <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <h3>Audrey Swart</h3>
+      <p>Water Mechanism lead</p>
+    </div>
 
-<div class="w3-quarter">
-  <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Sophia Decleene</h3>
-  <p>Microphone lead</p>
-</div>
+    <div class="w3-quarter">
+      <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <h3>Sophia Decleene</h3>
+      <p>Microphone lead</p>
+    </div>
 
-</div>
+  </div>
 </div>
 
 <!-- Footer -->
@@ -220,29 +232,36 @@
 
 
 <script>
-// Script for side navigation
-function w3_open() {
-  var x = document.getElementById("mySidebar");
-  x.style.width = "300px";
-  x.style.paddingTop = "10%";
-  x.style.display = "block";
-}
-
-// Close side navigation
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-
-// Used to toggle the menu on smaller screens when clicking on the menu button
-function openNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
+  // Script for side navigation
+  function w3_open() {
+    var x = document.getElementById("mySidebar");
+    x.style.width = "300px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
   }
-}
+
+  // Close side navigation
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+  }
+
+  // Used to toggle the menu on smaller screens when clicking on the menu button
+  function openNav() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
 </script>
+
+
+<?php
+  }
+  else
+   header('Location: login.php');
+?>
 
 </body>
 </html>
