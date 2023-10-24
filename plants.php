@@ -1,21 +1,8 @@
-<?php 
-require('connect-db.php'); 
-require('plants-db.php');
+<?php require('button-handler.php') ?>
+<?php $tasks = getAllPlants(); ?>
 
-$tasks = getAllPlants(); 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
 
-  if (!empty($_POST['action']) && $_POST['action'] == 'Add')
-  {
-    // add a item
-    addItem($_POST['type'],$_POST['name'], $_POST['light'],$_POST['min'], $_POST['max'], $_POST['water']);
-    $tasks = getAllPlants();
-  }
-}
-
-?>
 
 <!DOCTYPE html>
 <html>
@@ -92,23 +79,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       <br>
 
       <!-- Type -->
-      <form action="#" id="formSubmission" method="get"> 
-      <h3 for="type">Type of Plant:</h3>    
-      <!--php to register type of plant--> 
-      <input name="type"  type="text" class="input" placeholder="Type of plant" > 
+      <form name="mainForm" action="plants.php" method="post"> 
+      <label for="type"><h3>Type of Plant:</h3></label>     
+      <!-- Error message -->
+      <span class="msg"><?php if (empty($_POST['type'])) echo $type_msg ?></span>
+     <!--php to register type of plant--> 
+      <input name="type"  type="text" class="input" placeholder="Type of plant" 
+        value="<?php if ($task_to_update != null) echo $task_to_update['plant_type'];
+          elseif (isset($_GET['type'])) echo $_GET['type']; ?>"
+        <?php if (empty($_POST['type'])) { ?> autofocus <?php } ?> 
+         /> 
 
       <!-- Name -->
-      <h3 for="name">Name of Plant:</h3>
-      <input name="name"  type="text" class="input" placeholder="Plant nickname" > <!--php to register name of plant-->
-      
-      <!-- Light -->
-      <h3 for="light">Light Preferences:</h3>
+      <label for="name"><h3>Name of Plant:</h3></label>  
+      <!-- Error message -->
+      <span class="msg"><?php if (empty($_POST['name'])) echo $name_msg ?></span>
+      <!--php to register name of plant--> 
+      <input name="name"  type="text" class="input form-control" placeholder="Plant nickname"  
+      value="<?php if ($task_to_update != null) echo $task_to_update['plant_name']; 
+          elseif (isset($_GET['name'])) echo $_GET['name']; ?>"
+       <?php if (empty($_POST['name'])) { ?> autofocus <?php } ?> 
+        /> 
+     
+       <!-- Light -->
+      <label for="light"><h3>Light Preferences:</h3></label>  
       <div class="custom-select">
         <select name="light">
-          <option value="0"> Choose Plant Lighting</option>
-          <option value="0"> Direct Sunlight</option>
-          <option value="1">Indirect Sunlight (room lighting) </option>
-          <option value="2">Little to No Lighting</option>
+          <option value="default" > Choose Plant Lighting</option>
+          <option value="direct"
+          <?php if ($task_to_update != null && $task_to_update['plant_light']=='direct')
+               { ?> 
+               selected 
+         <?php } ?>  
+          > Direct Sunlight</option>
+          <option value="indirect"
+          <?php if ($task_to_update != null && $task_to_update['plant_light']=='indirect')
+               { ?> 
+               selected 
+         <?php } ?>  
+          >Indirect Sunlight  </option>
+          <option value="no"
+          <?php if ($task_to_update != null && $task_to_update['plant_light']=='no')
+               { ?> 
+               selected 
+         <?php } ?>  
+          >Little to No Lighting</option>
         </select>
       </div>
 
@@ -121,12 +136,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <!-- Water drop down menu -->
       <h3 for="water">Water Schedule:</h3>
       <div class="custom-select">
-        <select name="water">
-          <option value="0"> Enter ideal water schedule</option>
-          <option value="1">Every 2-3 days</option>
-          <option value="3">Once a week</option>
-          <option value="4"> Every 2 weeks</option>
-          <option value="5"> Idk when soil is dry</option>
+        <select name="water"  class="form-select">
+          <option value="4"
+          <?php if ($task_to_update != null && $task_to_update['plant_water']=='4')
+               { ?> 
+               selected 
+         <?php } ?>  
+          > Enter ideal water schedule</option>
+          <option value="5"
+          <?php if ($task_to_update != null && $task_to_update['plant_water']=='5')
+               { ?> 
+               selected 
+         <?php } ?>       
+          >Every 2-3 days</option>
+          <option value="6"
+          <?php if ($task_to_update != null && $task_to_update['plant_water']=='6')
+               { ?> 
+               selected 
+         <?php } ?>  
+          >Once a week</option>
+          <option value="7"
+          <?php if ($task_to_update != null && $task_to_update['plant_water']=='7')
+               { ?> 
+               selected 
+         <?php } ?>  
+          > Every 2 weeks</option>
+          <option value="8"
+          <?php if ($task_to_update != null && $task_to_update['plant_water']=='8')
+               { ?> 
+               selected 
+         <?php } ?>  
+          > Idk when soil is dry</option>
         </select>
       </div>
       <br>
@@ -136,8 +176,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       <input name="image" type="file" id="myImage" class="input"  onchange="checkFileType()" > 
       </form>  -->
 
-      <input type="submit" value="Add" name="action" class="w3-button button w3-block"/>
-      
+      <input type="submit" value="Submit" name="action" class="btn btn-dark" title="Insert a plant into a plant table" />
+      <input type="submit" value="Confirm update" name="action" class="btn btn-dark" title="Confirm update on plant" />
+  
     </div>
    </div>
 </section>
@@ -170,12 +211,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <td><?php echo $item['max_temp'] ?></td>
         <td><?php echo $item['plant_water'] ?></td>
         <!-- <td><?php echo $item['plant_image'] ?></td> -->
+        <td>
+          <form action="plants.php" method="post">
+            <input type="submit" value="Update" name="action" class="btn btn-primary" />
+            <input type="hidden" name="plant_to_update" 
+              value="<?php echo $item['plant_name'] ?>" />                 
+          </form>
+      </td>
+      <td>
+        <form action="plants.php" method="post">
+          <input type="submit" value="Delete" name="action" class="btn btn-danger" />
+          <input type="hidden" name="plant_to_delete" 
+            value="<?php echo $item['plant_name'] ?>" />                 
+        </form>
+      </td>
+
       </tr>
       <?php endforeach; ?>
     </table>
   </div>
   </div>
-</div>
 
 </section>
 

@@ -1,70 +1,70 @@
 
 h1{
-    font-size: 80px; /* Font size for the title */
-    color: #9feea0d3;  /* Text color (white) */
-    text-shadow: 5px 5px 5px #000000;
-    font-family:  "Trebuchet MS";
+  font-size: 80px; /* Font size for the title */
+  color: #9feea0d3;  /* Text color (white) */
+  text-shadow: 5px 5px 5px #000000;
+  font-family:  "Trebuchet MS";
 }
 
 h2{
-    font-size: 40px;
-    text-shadow: 5px 5px 5px #000000;
-    color: #9feea0fd;
-    text-align: center;
-    font-family:  "Trebuchet MS";
+  font-size: 40px;
+  text-shadow: 5px 5px 5px #000000;
+  color: #9feea0fd;
+  text-align: center;
+  font-family:  "Trebuchet MS";
 }
 
 h3{
-    font-size: 25px;
-    text-align: center;
-    color:#9feea0f2;
-    text-shadow: 2px 2px 2px #000000; 
+  font-size: 25px;
+  text-align: center;
+  color:#9feea0f2;
+  text-shadow: 2px 2px 2px #000000; 
 }
-    
+  
 h4{
-    padding: 10px;
-    font-size: 100%;
+  padding: 10px;
+  font-size: 100%;
 }
 
 p{
-    font-size: 16px;
-    color: rgba(214, 236, 215, 0.793);
-    text-align: center;
+  font-size: 16px;
+  color: rgba(214, 236, 215, 0.793);
+  text-align: center;
 }
 
 span{
-    font-size: 17px;
-    color: white;
+  font-size: 17px;
+  color: white;
 
 }
 
 .title{
-    background-color: #052513eb; /*background-color: #053f43da;*/
+  background-color: #052513eb; /*background-color: #053f43da;*/
 }
 
 body {
-    font-family:  "Trebuchet MS", Tahoma, sans-serif;
-    margin: 5px;
-    background-color: #052513eb;
+  font-family:  "Trebuchet MS", Tahoma, sans-serif;
+  margin: 5px;
+  background-color: #052513eb;
 }
 
 .backgroundDark{
-    background-color: #072e18;;
+  background-color: #072e18;;
 }
 
 .formContainer{
-    width: 50%; /* Set a maximum width for the login container */
-    height: 90%;
-    margin: 10px center;
-    position: relative;
-    left: 24%;
-    border-radius: 30px;
-    padding: 30px;
-    box-shadow: 20px 20px 20px 20px rgba(0, 19, 4, 0.673);
-    text-align: center;
-    border-color: #052513dd;
-    border-style: solid;
-    border-width: 6px;  
+  width: 50%; /* Set a maximum width for the login container */
+  height: 90%;
+  margin: 10px center;
+  position: relative;
+  left: 24%;
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 20px 20px 20px 20px rgba(0, 19, 4, 0.673);
+  text-align: center;
+  border-color: #052513dd;
+  border-style: solid;
+  border-width: 6px;  
 }
 
 .collapsible {

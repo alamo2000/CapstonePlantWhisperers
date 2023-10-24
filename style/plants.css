@@ -1,3 +1,10 @@
+/* form error message */
+.msg {
+    margin-left:24px;
+    font-style: italic;
+    color: rgb(255, 4, 0);
+    font-size: 15px;
+}
 
 h1{
     font-size: 80px; /* Font size for the title */

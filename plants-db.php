@@ -14,37 +14,69 @@ function getAllPlants()
    return $results;
 }
 
+function getPlantInfo_by_name($task)
+{
+    global $db;
+    $query = "SELECT * FROM plant WHERE plant_name= :pname";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':pname', $task);
+    $statement->execute();
 
-function addItem( $type, $name, $light, $min, $max, $water)
+    $results = $statement->fetch();
+
+    $statement->closeCursor();
+    return $results; 
+}
+
+function addPlant( $type, $name, $light, $min, $max, $water)
 {
 	// db handler
     global $db;
     // sql
-    $query = "INSERT INTO plant (plant_type, plant_name, plant_light, min_temp, max_temp, plant_water) VALUES (:itype, :iname :ilight, :imin, :imax, :iwater)";
-
+   // $query = "INSERT INTO plant (plant_type, plant_name, plant_light, min_temp, max_temp, plant_water) VALUES (:ptype, :pname :plight, :pmin, :pmax, :pwater)";
+    $query = "INSERT INTO `plant`(`id`, `plant_type`, `plant_name`, `plant_light`, `min_temp`, `max_temp`, `plant_water`) VALUES (NULL,\'Cactus\',\'prickley\',\'Indirect\',\'70\',\'90\',\'Once a week\');";
     // execute
     $statement = $db->prepare($query);  
-    $statement->bindValue(':itype', $type);
-    $statement->bindValue(':iname', $name);
-    $statement->bindValue(':ilight', $light);
-    $statement->bindValue(':imin', $min);
-    $statement->bindValue(':imax', $max);
-    $statement->bindValue(':iwater', $water);
+    $statement->bindValue(':ptype', $type);
+    $statement->bindValue(':pname', $name);
+    $statement->bindValue(':plight', $light);
+    $statement->bindValue(':pmin', $min);
+    $statement->bindValue(':pmax', $max);
+    $statement->bindValue(':pwater', $water);
     $statement->execute();
 
-    // release 
     $statement->closeCursor();
 }
 
-// function deleteTask($type)
-// {
-//     global $db;
-//     $query = "DELETE FROM plant WHERE plant_type = :itype";
-//     $statement = $db->prepare($query);
-// 	$statement->bindValue(':itype', $type);
-//     $statement->execute();
-// 	$statement->closeCursor();
-// }
+function updatePlant( $type, $name, $light, $min, $max, $water)
+{
+	// db handler
+    global $db;
+    // sql
+    $query = "UPDATE plant SET plant_type=:ptype , plant_name=:pname, plant_light=:plight, min_temp=:pmin, max_temp=:pmax, plant_water=:pwater WHERE plant_name=:pname";
+
+    // execute
+    $statement = $db->prepare($query);  
+    $statement->bindValue(':ptype', $type);
+    $statement->bindValue(':pname', $name);
+    $statement->bindValue(':plight', $light);
+    $statement->bindValue(':pmin', $min);
+    $statement->bindValue(':pmax', $max);
+    $statement->bindValue(':pwater', $water);
+    $statement->execute();
+
+    $statement->closeCursor();
+}
+
+function deletePlant($type)
+{
+    global $db;
+    $query = "DELETE FROM plant WHERE plant_name = :pname";
+    $statement = $db->prepare($query);
+	$statement->bindValue(':pname', $type);
+    $statement->execute();
+	$statement->closeCursor();
+}
 
 ?>
 
