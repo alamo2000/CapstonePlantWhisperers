@@ -26,7 +26,7 @@
 <!-- Menu bar -->
 <div class="w3-top">
 
-  <div class="w3-bar w3-xlarge w3-theme-d3 w3-left-align">
+  <div class="w3-bar w3-large w3-theme-d3 w3-left-align">
     <!-- Home button -->
     <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
     <!-- My plants tab -->
