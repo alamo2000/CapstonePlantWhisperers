@@ -4,7 +4,7 @@ require('connect-db.php');
 require('plants-db.php');
 
 
-$task_to_update = null;       // row of item (contains 6 columns)
+$task_to_update = null;      
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -13,29 +13,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   {
     // add a item
     addPlant($_POST['type'],$_POST['name'], $_POST['light'],$_POST['min'], $_POST['max'], $_POST['water']);
-     $objects = getAllPlants();
+    $tasks = getAllPlants();
+
   }
 
   else if (!empty($_POST['action']) && $_POST['action'] == 'Update')
   {
-     // retrieve the item to update
-     $task_to_update= getPlantInfo_by_name($_POST['plant_to_update']); 
-     // update after confirm
-     var_dump($task_to_update);         // complete the update
+    // retrieve the item to update
+    $task_to_update= getPlantInfo_by_name($_POST['plant_to_update']); 
+    // update after confirm
+    var_dump($task_to_update);   // complete the update
   }
+
   else if (!empty($_POST['action']) && $_POST['action'] == 'Delete')
   {
-    // delete the given item
-    deletePlant($_POST['plant_to_delete']);    // will write code tomorrow
-    $objects = getAllPlants();
+    // delete the specific plant
+    deletePlant($_POST['plant_to_delete']); 
+    $tasks = getAllPlants();
+  }
+
+
+  if (!empty($_POST['action']) && $_POST['action'] == 'Confirm update')
+  {
+    updatePlant($_POST['type'],$_POST['name'], $_POST['light'],$_POST['min'], $_POST['max'], $_POST['water']);
+    $tasks = getAllPlants();
   }
 }
 ?>
 
 
 <?php
+//Error messages
 $type = $name = $light = $min = $max = $water = NULL;
-$type_msg = $name_msg = $light_msg = $min_msg = $max_msg= $water_msg = NULL;
+$type_msg = $name_msg = $light_msg = $temp_msg= $water_msg = NULL;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -54,31 +64,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   }
   
   if (empty($_POST['light']))
-    $date_msg = "Please enter light ";
+    $light_msg = "Please enter light ";
   else
   {
-    $date = trim($_POST['light']);
+    $light = trim($_POST['light']);
   }
 
-  if (empty($_POST['min']))
-    $loc_msg = "Please enter the min temp";
-  else
-  {
-    $location = trim($_POST['min']);
-  }
 
-  if (empty($_POST['max']))
-    $contact_msg = "Please enter the max temp";
+  if (empty($_POST['max'] &&  empty($_POST['min'])))
+    $temp_msg = "Please enter the temperature";
   else
   {
-    $contact= trim($_POST['max']);
+    $max= trim($_POST['max']);
+    $min = trim($_POST['min']);
   }
 
   if (empty($_POST['water']))
-  $contact_msg = "Please enter the water schedule"; 
+  $water_msg = "Please enter the water schedule"; 
   else
   {
-    $contact= trim($_POST['water']);
+    $water= trim($_POST['water']);
   }
 
 }

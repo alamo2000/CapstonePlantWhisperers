@@ -1,8 +1,3 @@
-<?php require('button-handler.php') ?>
-<?php $tasks = getAllPlants(); ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -14,34 +9,38 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="style/plants.css" /> 
+
+<link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css”>
 </head>
 
 <body id="myPage">
-<?php
-  if(isset($_COOKIE['user']))
-  {
-?>
-<?php session_start(); // make sessions available ?>
+
+<!-- Links the php database form handling -->
+<div class="error">
+  <?php require('button-handler.php') ?>
+  <?php $tasks = getAllPlants(); ?>
+</div>
+
+
 
 <!-- Menu bar -->
 <div class="w3-top">
 
-  <div class="w3-bar w3-theme-d3 w3-left-align">
+  <div class="w3-bar w3-xlarge w3-theme-d3 w3-left-align">
     <!-- Home button -->
     <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
     <!-- My plants tab -->
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-green">My Plants</a>
     <!-- Setting drop down menu -->
     <div class="w3-dropdown-hover w3-hide-small ">
-    <button class="w3-button " title="Notifications">Settings <i class="fa fa-caret-down"></i></button>
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-      <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
-      <a href="help.html" class="w3-bar-item w3-button">Help</a>
-      <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
-      <a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
+      <button class="w3-button " title="Notifications">Settings <i class="fa fa-caret-down"></i></button>
+      <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+        <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
+        <a href="help.html" class="w3-bar-item w3-button">Help</a>
+        <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
+        <a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
+      </div>
     </div>
-  </div>
-
  </div>
 
   <!-- Navbar on small screens -->
@@ -67,126 +66,213 @@
 </div>
 </div>
 
+<?php session_start(); ?>
+
+<?php
+  if(isset($_COOKIE['user']))
+  {
+?>
+
+
 
 <section>
 <!-- Plant page -->
 <div id="plantPage" class="w3-row-padding w3-padding-64 backgroundDark" id="work">
     
-    <!--Start of the form   -->
+    
     <div class="formContainer">
       <h2><b>DETAILS</b></h2>
       <p>To get started fill out the form below to register your plant and add it to the virtual green house which can be shown on the home page. Setting the water peferences will help water plant on a schedule if sensors don't work</p>
       <br>
 
+      <!--Start of the form   -->
+      <form name="mainForm" action="plants.php" method="post" enctype="multipart/form-data"> 
+     
       <!-- Type -->
-      <form name="mainForm" action="plants.php" method="post"> 
-      <label for="type"><h3>Type of Plant:</h3></label>     
-      <!-- Error message -->
-      <span class="msg"><?php if (empty($_POST['type'])) echo $type_msg ?></span>
-     <!--php to register type of plant--> 
-      <input name="type"  type="text" class="input" placeholder="Type of plant" 
-        value="<?php if ($task_to_update != null) echo $task_to_update['plant_type'];
-          elseif (isset($_GET['type'])) echo $_GET['type']; ?>"
-        <?php if (empty($_POST['type'])) { ?> autofocus <?php } ?> 
-         /> 
+        <label for="type"><h3>Type of Plant:</h3></label>    
+         <!--Error message when field isnt filled out  -->
+        <span class="msg"><?php if (empty($_POST['type'])) echo $type_msg ?></span>
+        <!--php to register type of plant--> 
+        <input name="type"  type="text" class="input" placeholder="Type of plant" 
+          value="<?php if ($task_to_update != null) echo $task_to_update['plant_type'];
+            elseif (isset($_GET['type'])) echo $_GET['type']; ?>"
+          <?php if (empty($_POST['type'])) { ?> autofocus <?php } ?> 
+          /> 
 
       <!-- Name -->
-      <label for="name"><h3>Name of Plant:</h3></label>  
-      <!-- Error message -->
-      <span class="msg"><?php if (empty($_POST['name'])) echo $name_msg ?></span>
-      <!--php to register name of plant--> 
-      <input name="name"  type="text" class="input form-control" placeholder="Plant nickname"  
-      value="<?php if ($task_to_update != null) echo $task_to_update['plant_name']; 
-          elseif (isset($_GET['name'])) echo $_GET['name']; ?>"
-       <?php if (empty($_POST['name'])) { ?> autofocus <?php } ?> 
+        <label for="name"><h3>Name of Plant:</h3></label>  
+        <!--Error message when field isnt filled out  -->
+        <span class="msg"><?php if (empty($_POST['name'])) echo $name_msg ?></span>
+        <!--php to register name of plant--> 
+        <input name="name"  type="text" class="input" placeholder="Plant nickname"  
+        value="<?php if ($task_to_update != null) echo $task_to_update['plant_name']; 
+            elseif (isset($_GET['name'])) echo $_GET['name']; ?>"
+        <?php if (empty($_POST['name'])) { ?> autofocus <?php } ?> 
         /> 
-     
-       <!-- Light -->
-      <label for="light"><h3>Light Preferences:</h3></label>  
-      <div class="custom-select">
-        <select name="light">
-          <option value="default" > Choose Plant Lighting</option>
-          <option value="direct"
-          <?php if ($task_to_update != null && $task_to_update['plant_light']=='direct')
-               { ?> 
-               selected 
-         <?php } ?>  
-          > Direct Sunlight</option>
-          <option value="indirect"
-          <?php if ($task_to_update != null && $task_to_update['plant_light']=='indirect')
-               { ?> 
-               selected 
-         <?php } ?>  
-          >Indirect Sunlight  </option>
-          <option value="no"
-          <?php if ($task_to_update != null && $task_to_update['plant_light']=='no')
-               { ?> 
-               selected 
-         <?php } ?>  
-          >Little to No Lighting</option>
-        </select>
-      </div>
+      
+      <!-- Light -->
+        <label for="light"><h3>Light Preferences:</h3></label>  
+        <!--Error message when field isnt filled out  -->
+        <span class="msg"><?php if (empty($_POST['light'])) echo $light_msg ?></span>
+        <!--php to register light settings of plant--> 
+        <!-- <input name="light"  type="text" class="input form-control" placeholder="Direct, Indirect, or No lighting"  
+        value="<?php if ($task_to_update != null) echo $task_to_update['plant_light']; 
+            elseif (isset($_GET['light'])) echo $_GET['light']; ?>"
+        <?php if (empty($_POST['light'])) { ?> autofocus <?php } ?>  
+        /> -->
+        <div class="custom-select">
+          <select name="light">
+            <option value="default" > Choose Plant Lighting</option>
+            <option value="direct"
+            <?php if ($task_to_update != null && $task_to_update['plant_light']=='Direct Lighting')
+                { ?> 
+                selected 
+          <?php } ?>  
+            > Direct Sunlight</option>
+            <option value="indirect"
+            <?php if ($task_to_update != null && $task_to_update['plant_light']=='Indirect Lighting')
+                { ?> 
+                selected 
+          <?php } ?>  
+            >Indirect Sunlight  </option>
+            <option value="no"
+            <?php if ($task_to_update != null && $task_to_update['plant_light']=='Little to No Lighting')
+                { ?> 
+                selected 
+          <?php } ?>  
+            >Little to No Lighting</option>
+          </select>
+        </div>
 
       <!-- Temp -->
-      <h3 for for="temp">Temperature Conditions:</h3>
-      <input  name="min" type="text" class="temp-input" placeholder="min temp"  style="float:left"> 
-       <input name="max" type="text" class="temp-input" placeholder="max temp"  style="float:left">
-      </form>
-      
-    <!-- Water drop down menu -->
-      <h3 for="water">Water Schedule:</h3>
-      <div class="custom-select">
-        <select name="water"  class="form-select">
-          <option value="4"
-          <?php if ($task_to_update != null && $task_to_update['plant_water']=='4')
-               { ?> 
-               selected 
-         <?php } ?>  
-          > Enter ideal water schedule</option>
-          <option value="5"
-          <?php if ($task_to_update != null && $task_to_update['plant_water']=='5')
-               { ?> 
-               selected 
-         <?php } ?>       
-          >Every 2-3 days</option>
-          <option value="6"
-          <?php if ($task_to_update != null && $task_to_update['plant_water']=='6')
-               { ?> 
-               selected 
-         <?php } ?>  
-          >Once a week</option>
-          <option value="7"
-          <?php if ($task_to_update != null && $task_to_update['plant_water']=='7')
-               { ?> 
-               selected 
-         <?php } ?>  
-          > Every 2 weeks</option>
-          <option value="8"
-          <?php if ($task_to_update != null && $task_to_update['plant_water']=='8')
-               { ?> 
-               selected 
-         <?php } ?>  
-          > Idk when soil is dry</option>
-        </select>
-      </div>
-      <br>
-<!-- 
-      <h3 for="image"> Upload Image: </h3>
-      <form action="<?php $_SERVER['PHP_SELF']?>" style="position:relative; left:0;color:rgba(113, 162, 113, 0.821);" method="post" >
-      <input name="image" type="file" id="myImage" class="input"  onchange="checkFileType()" > 
-      </form>  -->
+       <label for="min"><h3>Temperature Conditions:</h3></label>
+       <!--Error message when field isnt filled out  -->
+       <span class="msg"><?php if (empty($_POST['min'])) echo $temp_msg ?></span>
+       
+       
+     <!-- Min Temperature -->     
+         <!--php to register min temperature settings of plant--> 
+       <input  name="min" type="text" class="temp-input" placeholder="min temp"  style="float:left"
+        value="<?php if ($task_to_update != null) echo $task_to_update['min_temp']; 
+            elseif (isset($_GET['min'])) echo $_GET['min']; ?>"
+        <?php if (empty($_POST['min'])) { ?> autofocus <?php } ?> 
+        /> 
+        
+      <!-- Max Temperature -->
+        <input name="max" type="text" class="temp-input" placeholder="max temp"  style="float:left"
+        value="<?php if ($task_to_update != null) echo $task_to_update['max_temp']; 
+          elseif (isset($_GET['max'])) echo $_GET['max']; ?>"
+        <?php if (empty($_POST['max'])) { ?> autofocus <?php } ?> 
+        /> 
 
-      <input type="submit" value="Submit" name="action" class="btn btn-dark" title="Insert a plant into a plant table" />
-      <input type="submit" value="Confirm update" name="action" class="btn btn-dark" title="Confirm update on plant" />
-  
+      <!-- Water drop down menu -->
+        <label for="water"><h3>Water Schedule:</h3> </label>
+        <!--Error message when field isnt filled out  -->
+        <span class="msg"><?php if (empty($_POST['water'])) echo $water_msg ?></span>
+        <!--php to register light settings of plant--> 
+        <!-- <input name="water" type="text" class="input" placeholder="Water schedule"  style="float:left"
+        value="<?php if ($task_to_update != null) echo $task_to_update['plant_water']; 
+          elseif (isset($_GET['water'])) echo $_GET['water']; ?>"
+        <?php if (empty($_POST['water'])) { ?> autofocus <?php } ?> 
+        />  -->
+        <div class="custom-select">
+          <select name="water"  class="form-select">
+            <option value="default"
+            <?php if ($task_to_update != null && $task_to_update['plant_water']=='default')
+                { ?> 
+                selected 
+          <?php } ?>  
+            > Enter ideal water schedule</option>
+            <option value="2-3 days"
+            <?php if ($task_to_update != null && $task_to_update['plant_water']=='2-3 days')
+                { ?> 
+                selected 
+          <?php } ?>       
+            >Every 2-3 days</option>
+            <option value="once a week"
+            <?php if ($task_to_update != null && $task_to_update['plant_water']=='Once a week')
+                { ?> 
+                selected 
+          <?php } ?>  
+            >Once a week</option>
+            <option value="biweekly"
+            <?php if ($task_to_update != null && $task_to_update['plant_water']=='Biweekly')
+                { ?> 
+                selected 
+          <?php } ?>  
+            > Every 2 weeks</option>
+            <option value="dry"
+            <?php if ($task_to_update != null && $task_to_update['plant_water']=='Idk')
+                { ?> 
+                selected 
+          <?php } ?>  
+            > Idk when soil is dry</option>
+          </select>
+        </div>
+      
+        
+        <label for="image"><h3> Upload Image: </h3></label>
+          <input type="file" name="uploadfile" class="input" />
+          <input type="submit" name="submit" value="Upload" />
+        <br>
+        <input type="submit" value="Submit" name="action" class="input" />
+        <br>
+        <input type="submit" value="Confirm update" name="action" class="input" />
+        <br>
+
+      </form>
     </div>
    </div>
 </section>
 
+<!-- Image Placement  -->
+<?php
+  error_reporting(0);
+  
+  $msg = "";
+  
+  // If upload button is clicked ...
+  if (isset($_POST['upload'])) {
+      $filename = $_FILES["uploadfile"]["name"];
+      $tempname = $_FILES["uploadfile"]["tmp_name"];
+      $folder = "./images/" . $filename;
+  
+      global $db;
+      // Get all the submitted data from the form
+      $query = "INSERT INTO `image` (`filename`) VALUES (`$filename`)";
+      $statement = $db->prepare($query);
+      // Execute query
+      $statement->execute();
+  
+      // Now let's move the uploaded image into the folder: image
+      if (move_uploaded_file($tempname, $folder)) {
+          echo "<h3>  Image uploaded successfully!</h3>";
+      } else {
+          echo "<h3>  Failed to upload image!</h3>";
+      }
+  }
+?>
+
+<div id="display-image">
+  <?php
+  // Establish a PDO connection to your database
+  global $db;
+    
+  $query = "SELECT filename FROM image";
+  $statement = $db->prepare($query);
+
+  while ($data = $statement->fetchAll()) {
+  ?>
+      <img src="./images/<?php echo $data['filename']; ?>">
+  <?php
+  }
+  ?>
+</div>
+
+
 <!-- Plant table input -->
 <section>
 <div class="w3-container w3-theme-d1 w3-padding-64 w3-center" id="team">
-
 <div style="position:relative; left: 10%;">
     <table id="myTable">
       <!-- Header -->
@@ -210,32 +296,33 @@
         <td><?php echo $item['min_temp'] ?></td>
         <td><?php echo $item['max_temp'] ?></td>
         <td><?php echo $item['plant_water'] ?></td>
-        <!-- <td><?php echo $item['plant_image'] ?></td> -->
+        
         <td>
           <form action="plants.php" method="post">
             <input type="submit" value="Update" name="action" class="btn btn-primary" />
             <input type="hidden" name="plant_to_update" 
-              value="<?php echo $item['plant_name'] ?>" />                 
+            value="<?php echo $item['plant_name'] ?>" 
+            />                 
           </form>
-      </td>
-      <td>
-        <form action="plants.php" method="post">
-          <input type="submit" value="Delete" name="action" class="btn btn-danger" />
-          <input type="hidden" name="plant_to_delete" 
-            value="<?php echo $item['plant_name'] ?>" />                 
-        </form>
-      </td>
+        </td>
+      
+        <td>
+          <form action="plants.php" method="post">
+            <input type="submit" value="Delete" name="action" class="btn btn-danger" />
+            <input type="hidden" name="plant_to_delete" 
+            value="<?php echo $item['plant_name'] ?>" 
+            />                 
+          </form>
+        </td>
 
       </tr>
       <?php endforeach; ?>
     </table>
   </div>
   </div>
-
 </section>
 
 <footer class="w3-container w3-padding-32 w3-theme-d3 w3-center"></footer>
-
 
 <!-- Dropdown backend -->
 <script>

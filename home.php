@@ -11,6 +11,13 @@
 </head>
 <body id="myPage">
 
+<?php include('button-handler.php') ?>
+<?php 
+  $task = getAllPlants();
+?>
+
+<?php session_start(); ?>
+
 <?php
   if(isset($_COOKIE['user']))
   {
@@ -22,13 +29,13 @@
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-display-topright w3-theme-d1">Close
     <i class="fa fa-remove"></i>
   </a>
-  <a href="plants.html" class="w3-bar-item w3-button">Add plant</a>
+  <a href="plants.php" class="w3-bar-item w3-button">Add plant</a>
 
 </nav>
 
 <!-- Menu bar -->
 <div class="w3-top">
-<div class="w3-bar w3-theme-d3 w3-left-align">
+<div class="w3-bar w3-large w3-theme-d3 w3-left-align">
   <!-- Home button -->
   <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
   <!-- My plants tab -->

@@ -1,8 +1,20 @@
+#display-image{
+    width: 100%;
+    justify-content: center;
+    padding: 5px;
+    margin: 15px;
+}
+img{
+    margin: 5px;
+    width: 350px;
+    height: 250px;
+}
+
 /* form error message */
 .msg {
     margin-left:24px;
     font-style: italic;
-    color: rgb(255, 4, 0);
+    color: rgb(17, 255, 0);
     font-size: 15px;
 }
 
@@ -45,16 +57,17 @@ p{
 body {
     font-family:  "Trebuchet MS", Tahoma, sans-serif;
     margin: 5px;
-    background-color: #052513eb;
+    background-color: #d4e1daeb;
 }
-
+.error{
+    background-color: white ;
+}
 
 /* rectangular border around form */
 .formContainer{
 
     width: 40%; /* Set a maximum width for the login container */
-    height: 60%;
-    margin: 10px center;
+    height: 65%;
     position: relative;
     left: 28%;
     background-color:	#33993384; /* Semi-transparent green background for better readability */
@@ -86,7 +99,7 @@ body {
     border: none;
     border-radius: 20px;
     font-size: 16px;
-    width: 50%;
+    width: 40%;
     color: white !important;
     background-color: #07331b88 !important;
 }
@@ -110,12 +123,13 @@ body {
 /* drop down menu */
 .custom-select {
     position: relative;
+    color: white !important;
+    background-color: #07331b88;
 }
 
 .custom-select select {
     display: none; /*hide original SELECT element:*/
-  }
-  
+}
 
 .select-selected {
     background-color: #07331b88;
@@ -148,12 +162,13 @@ body {
     border-color: transparent transparent rgba(241, 237, 237, 0.1) transparent;
     cursor: pointer;
     user-select: none;
+    background:#052513 !important; 
 }
 
 /*style items (options):*/
 .select-items {
     position: absolute;
-    background-color: #052513;
+    background-color: #183b16;
     text-align: left;
     top: 100%;
     left: 0;
@@ -168,7 +183,7 @@ body {
 }
 
 .select-items div:hover, .same-as-selected {
-    background-color: rgba(48, 203, 69, 0.1);
+    background-color: rgba(48, 203, 69, 0.601);
 }
 
 
