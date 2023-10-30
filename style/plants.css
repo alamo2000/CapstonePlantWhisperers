@@ -57,17 +57,14 @@ p{
 body {
     font-family:  "Trebuchet MS", Tahoma, sans-serif;
     margin: 5px;
-    background-color: #000000eb;
-}
-.error{
-    background-color: white ;
+    background-color: white;
 }
 
 /* rectangular border around form */
 .formContainer{
 
     width: 40%; /* Set a maximum width for the login container */
-    height: 65%;
+    height: 70%;
     position: relative;
     left: 28%;
     background-color:	#33993384; /* Semi-transparent green background for better readability */
@@ -82,14 +79,15 @@ body {
 
 /* Input field */
 .input {
-    margin: 2px 0;
+    margin: 1px 0;
+    float:left;
     padding: 10px;
     border: none;
     border-radius: 20px;
     font-size: 16px;
     width: 100%;
     color: white !important;
-    background-color: #07331b88;
+    background-color: #07331b94;
 }
 
 /* Temp Input field */
@@ -99,8 +97,8 @@ body {
     border: none;
     border-radius: 20px;
     font-size: 16px;
-    width: 40%;
-    color: white !important;
+    width: 47%;
+    color: rgb(179, 238, 187) !important;
     background-color: #07331b88 !important;
 }
 
@@ -124,6 +122,8 @@ body {
 .custom-select {
     position: relative;
     color: white !important;
+    font-size: 16px;
+    border-radius: 20px !important;
     background-color: #07331b88;
 }
 
@@ -131,13 +131,15 @@ body {
     display: none; /*hide original SELECT element:*/
 }
 
+/* The default box */
 .select-selected {
-    background-color: #07331b88;
-    border-radius: 20px;
-    color: rgba(244, 248, 244, 0.821);
+    
+    font-size: 16px;
+    text-align: left;
+    color: rgba(229, 241, 229, 0.821);
 }
 
-/*style the arrow inside the select element:*/
+/*style the downward arrow inside the select element:*/
 .select-selected:after {
     position: absolute;
     content: "";
@@ -146,6 +148,7 @@ body {
     width: 0;
     height: 0;
     border: 6px solid transparent;
+    border-color: #f4ebeb transparent  transparent transparent ;
  }
 
 /*point the arrow upwards when the select box is open (active):*/
@@ -159,22 +162,22 @@ body {
     color:rgba(113, 162, 113, 0.821);
     padding: 8px 16px;
     border: 1px solid transparent;
+    border-radius: 20px;
     border-color: transparent transparent rgba(241, 237, 237, 0.1) transparent;
     cursor: pointer;
     user-select: none;
-    background:#052513 !important; 
 }
 
 /*style items (options):*/
 .select-items {
     position: absolute;
-    background-color: #183b16;
+    background-color: #183b16f5;
+    border-radius: 20px;
     text-align: left;
     top: 100%;
     left: 0;
     right: 0;
     z-index: 99;
-    border-radius: 20px;
 }
 
 /*hide the items when the select box is closed:*/
@@ -182,8 +185,10 @@ body {
     display: none;
 }
 
+/* When you click on a item */
 .select-items div:hover, .same-as-selected {
-    background-color: rgba(48, 203, 69, 0.601);
+    background-color: rgba(55, 174, 71, 0.682);
+    color: white;
 }
 
 

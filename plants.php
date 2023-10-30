@@ -19,44 +19,6 @@
   <?php $tasks = getAllPlants(); ?>
 </div>
 
-<!-- <?php
-if(isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-  $name = $_FILES['image']['name'];
-  $type = $_FILES['image']['type'];
-  $data = file_get_contents($_FILES['image']['tmp_name']);
-  // connect to the database
-  global $db; // insert the image data into the database
-  $stmt = $db->prepare("INSERT INTO images (name, type, data) VALUES (?, ?, ?)");
-  $stmt->bindParam(1, $name);
-  $stmt->bindParam(2, $type);
-  $stmt->bindParam(3, $data);
-  $stmt->execute();
-}
-?> -->
-
-<div id="content">
-        <form method="POST" action="" enctype="multipart/form-data">
-            <div class="form-group">
-                <input class="form-control" type="file" name="uploadfile" value="" />
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit" name="upload">UPLOAD</button>
-            </div>
-        </form>
-    </div>
-    <div id="display-image">
-    <?php
-        $query = " select * from image ";
-        $result = mysqli_query($db, $query);
- 
-        while ($data = mysqli_fetch_assoc($result)) {
-    ?>
-        <img src="./image/<?php echo $data['filename']; ?>">
- 
-    <?php
-        }
-    ?>
-    </div>
 <!-- Menu bar -->
 <div class="w3-top">
 
@@ -182,8 +144,8 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
        <!--Error message when field isnt filled out  -->
        <span class="msg"><?php if (empty($_POST['min'])) echo $temp_msg ?></span>
        
-       
-     <!-- Min Temperature -->     
+     <!-- Min Temperature -->   
+     <div>  
          <!--php to register min temperature settings of plant--> 
        <input  name="min" type="text" class="temp-input" placeholder="min temp"  style="float:left"
         value="<?php if ($task_to_update != null) echo $task_to_update['min_temp']; 
@@ -192,23 +154,19 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         /> 
         
       <!-- Max Temperature -->
-        <input name="max" type="text" class="temp-input" placeholder="max temp"  style="float:left"
+        <input name="max" type="text" class="temp-input" placeholder="max temp"  style="float:right"
         value="<?php if ($task_to_update != null) echo $task_to_update['max_temp']; 
           elseif (isset($_GET['max'])) echo $_GET['max']; ?>"
         <?php if (empty($_POST['max'])) { ?> autofocus <?php } ?> 
         /> 
-
+      </div>
+        
+      <br>
       <!-- Water drop down menu -->
         <label for="water"><h3>Water Schedule:</h3> </label>
         <!--Error message when field isnt filled out  -->
         <span class="msg"><?php if (empty($_POST['water'])) echo $water_msg ?></span>
-        <!--php to register light settings of plant--> 
-        <!-- <input name="water" type="text" class="input" placeholder="Water schedule"  style="float:left"
-        value="<?php if ($task_to_update != null) echo $task_to_update['plant_water']; 
-          elseif (isset($_GET['water'])) echo $_GET['water']; ?>"
-        <?php if (empty($_POST['water'])) { ?> autofocus <?php } ?> 
-        />  -->
-
+  
         <div class="custom-select">
           <select name="water"  class="form-select">
             <option value="default"
@@ -246,19 +204,67 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
       
         
         <label for="image"><h3> Upload Image: </h3></label>
-          <input type="file" name="image" />
-          <input type="submit" name="submit" value="Upload" />
+          <input type="file" name="uploadfile" />
+          <input type="submit" name="submit" value="upload" />
 
 
+        <br>
         <br>
         <input type="submit" value="Submit" name="action" class="input" />
         </br>
         <input type="submit" value="Confirm update" name="action" class="input" />
         </br>
       </form>
+      <br>
+      <br>
     </div>
    </div>
 </section>
+
+<!-- Image Placement  -->
+<?php
+  error_reporting(0);
+  
+  $msg = "";
+  
+  // If upload button is clicked ...
+  if (isset($_POST['upload'])) {
+  
+      $filename = $_FILES["uploadfile"]["name"];
+      $tempname = $_FILES["uploadfile"]["tmp_name"];
+      $folder = "./images/" . $filename;
+  
+      global $db;
+      // Get all the submitted data from the form
+      $query = "INSERT INTO 'image' ('filename') VALUES ('$filename')";
+      $statement = $db->prepare($query);
+      // Execute query
+      $statement->execute();
+  
+      // Now let's move the uploaded image into the folder: image
+      if (move_uploaded_file($tempname, $folder)) {
+          echo "<h2>  Image uploaded successfully!</h2>";
+      } else {
+          echo "<h2>  Failed to upload image!</h2>";
+      }
+  }
+?>
+
+<div id="display-image">
+  <?php
+  // Establish a PDO connection to your database
+  global $db;
+    
+  $query = "SELECT filename FROM image";
+  $statement = $db->prepare($query);
+
+  while ($data = $statement->fetchAll()) {
+  ?>
+      <img src="./images/<?php echo $data['filename']; ?>">
+  <?php
+  }
+  ?>
+</div>
 
 <!-- Plant table input -->
 <section>
@@ -311,28 +317,9 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     </table>
   </div>
   </div>
-
-
-   <!-- Image Placement  -->
-
-   <div id="display-image">
-    <?php
-    // Establish a PDO connection to your database
-    global $db;
-     
-    $query = "SELECT filename FROM image";
-    $stmt = $db->prepare($query);
-
-    while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    ?>
-        <img src="./image/<?php echo $data['filename']; ?>">
-    <?php
-    }
-    ?>
-  </div>
 </section>
 
-<footer class="w3-container w3-padding-32 w3-theme-d3 w3-center"></footer>
+<footer class="w3-container w3-large w3-padding-32 w3-theme-d3 w3-center"></footer>
 
 
 <!-- Dropdown backend -->

@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $name = trim($_POST['name']);
   }
   
-  if (empty($_POST['light']))
+  if (($_POST['light']== "default"))
     $light_msg = "Please enter light ";
   else
   {
