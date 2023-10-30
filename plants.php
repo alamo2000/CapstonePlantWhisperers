@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="style/plants.css" /> 
-
-<link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css”>
 </head>
 
 <body id="myPage">
@@ -21,8 +19,44 @@
   <?php $tasks = getAllPlants(); ?>
 </div>
 
+<!-- <?php
+if(isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+  $name = $_FILES['image']['name'];
+  $type = $_FILES['image']['type'];
+  $data = file_get_contents($_FILES['image']['tmp_name']);
+  // connect to the database
+  global $db; // insert the image data into the database
+  $stmt = $db->prepare("INSERT INTO images (name, type, data) VALUES (?, ?, ?)");
+  $stmt->bindParam(1, $name);
+  $stmt->bindParam(2, $type);
+  $stmt->bindParam(3, $data);
+  $stmt->execute();
+}
+?> -->
 
-
+<div id="content">
+        <form method="POST" action="" enctype="multipart/form-data">
+            <div class="form-group">
+                <input class="form-control" type="file" name="uploadfile" value="" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="upload">UPLOAD</button>
+            </div>
+        </form>
+    </div>
+    <div id="display-image">
+    <?php
+        $query = " select * from image ";
+        $result = mysqli_query($db, $query);
+ 
+        while ($data = mysqli_fetch_assoc($result)) {
+    ?>
+        <img src="./image/<?php echo $data['filename']; ?>">
+ 
+    <?php
+        }
+    ?>
+    </div>
 <!-- Menu bar -->
 <div class="w3-top">
 
@@ -33,14 +67,15 @@
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-green">My Plants</a>
     <!-- Setting drop down menu -->
     <div class="w3-dropdown-hover w3-hide-small ">
-      <button class="w3-button " title="Notifications">Settings <i class="fa fa-caret-down"></i></button>
-      <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-        <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
-        <a href="help.html" class="w3-bar-item w3-button">Help</a>
-        <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
-        <a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
-      </div>
+    <button class="w3-button " title="Notifications">Settings <i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
+      <a href="help.html" class="w3-bar-item w3-button">Help</a>
+      <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
+      <a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
     </div>
+  </div>
+
  </div>
 
   <!-- Navbar on small screens -->
@@ -73,11 +108,9 @@
   {
 ?>
 
-
-
 <section>
 <!-- Plant page -->
-<div id="plantPage" class="backgroundDark" id="work">
+<div id="plantPage" class="w3-row-padding w3-padding-64 backgroundDark" id="work">
     
     
     <div class="formContainer">
@@ -86,7 +119,7 @@
       <br>
 
       <!--Start of the form   -->
-      <form name="mainForm" action="plants.php" method="post" enctype="multipart/form-data"> 
+      <form name="mainForm" action="plants.php" method="post"> 
      
       <!-- Type -->
         <label for="type"><h3>Type of Plant:</h3></label>    
@@ -175,6 +208,7 @@
           elseif (isset($_GET['water'])) echo $_GET['water']; ?>"
         <?php if (empty($_POST['water'])) { ?> autofocus <?php } ?> 
         />  -->
+
         <div class="custom-select">
           <select name="water"  class="form-select">
             <option value="default"
@@ -212,67 +246,24 @@
       
         
         <label for="image"><h3> Upload Image: </h3></label>
-          <input type="file" name="uploadfile" class="input" />
+          <input type="file" name="image" />
           <input type="submit" name="submit" value="Upload" />
+
+
         <br>
         <input type="submit" value="Submit" name="action" class="input" />
-        <br>
+        </br>
         <input type="submit" value="Confirm update" name="action" class="input" />
-        <br>
-
+        </br>
       </form>
     </div>
    </div>
 </section>
 
-<!-- Image Placement  -->
-<?php
-  error_reporting(0);
-  
-  $msg = "";
-  
-  // If upload button is clicked ...
-  if (isset($_POST['upload'])) {
-      $filename = $_FILES["uploadfile"]["name"];
-      $tempname = $_FILES["uploadfile"]["tmp_name"];
-      $folder = "./images/" . $filename;
-  
-      global $db;
-      // Get all the submitted data from the form
-      $query = "INSERT INTO `image` (`filename`) VALUES (`$filename`)";
-      $statement = $db->prepare($query);
-      // Execute query
-      $statement->execute();
-  
-      // Now let's move the uploaded image into the folder: image
-      if (move_uploaded_file($tempname, $folder)) {
-          echo "<h3>  Image uploaded successfully!</h3>";
-      } else {
-          echo "<h3>  Failed to upload image!</h3>";
-      }
-  }
-?>
-
-<div id="display-image">
-  <?php
-  // Establish a PDO connection to your database
-  global $db;
-    
-  $query = "SELECT filename FROM image";
-  $statement = $db->prepare($query);
-
-  while ($data = $statement->fetchAll()) {
-  ?>
-      <img src="./images/<?php echo $data['filename']; ?>">
-  <?php
-  }
-  ?>
-</div>
-
-
 <!-- Plant table input -->
 <section>
 <div class="w3-container w3-theme-d1 w3-padding-64 w3-center" id="team">
+
 <div style="position:relative; left: 10%;">
     <table id="myTable">
       <!-- Header -->
@@ -320,9 +311,29 @@
     </table>
   </div>
   </div>
+
+
+   <!-- Image Placement  -->
+
+   <div id="display-image">
+    <?php
+    // Establish a PDO connection to your database
+    global $db;
+     
+    $query = "SELECT filename FROM image";
+    $stmt = $db->prepare($query);
+
+    while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    ?>
+        <img src="./image/<?php echo $data['filename']; ?>">
+    <?php
+    }
+    ?>
+  </div>
 </section>
 
 <footer class="w3-container w3-padding-32 w3-theme-d3 w3-center"></footer>
+
 
 <!-- Dropdown backend -->
 <script>
