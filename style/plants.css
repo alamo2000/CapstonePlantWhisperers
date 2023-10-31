@@ -118,7 +118,7 @@ body {
     background-color: #072e18;;
 }
 
-/* drop down menu */
+/* drop down menu default */
 .custom-select {
     position: relative;
     color: white !important;
@@ -133,7 +133,6 @@ body {
 
 /* The default box */
 .select-selected {
-    
     font-size: 16px;
     text-align: left;
     color: rgba(229, 241, 229, 0.821);
@@ -159,7 +158,7 @@ body {
 
 /*style the items (options), including the selected item:*/
 .select-items div,.select-selected {
-    color:rgba(113, 162, 113, 0.821);
+    color:rgba(113, 162, 113, 0.745);
     padding: 8px 16px;
     border: 1px solid transparent;
     border-radius: 20px;
@@ -171,7 +170,7 @@ body {
 /*style items (options):*/
 .select-items {
     position: absolute;
-    background-color: #183b16f5;
+    background-color: #183b16;
     border-radius: 20px;
     text-align: left;
     top: 100%;
@@ -187,8 +186,8 @@ body {
 
 /* When you click on a item */
 .select-items div:hover, .same-as-selected {
-    background-color: rgba(55, 174, 71, 0.682);
-    color: white;
+    background-color: rgba(64, 167, 54, 0.895);
+    color: white !important;
 }
 
 
