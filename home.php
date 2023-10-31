@@ -76,7 +76,7 @@
     <!-- background image -->
   <br>
   <h4 style="text-align: left;">Welcome, <font color="Green" style="font-style:verdana; "><?php echo $_COOKIE['user'] ?></font></h4>
-  <img src="images/wet.jpeg" alt="boat" style="width:100%;min-height:350px;max-height:400px;opacity:0.5">
+  <img src="background/wet.jpeg" alt="boat" style="width:100%;min-height:350px;max-height:400px;opacity:0.5">
 
 
 
@@ -200,25 +200,25 @@
   <div class="w3-row"><br>
 
     <div class="w3-quarter">
-      <img src="images/alex.png" alt="Boss" style="width:45%; " class="w3-circle w3-hover-opacity">
+      <img src="background/alex.png" alt="Boss" style="width:45%; " class="w3-circle w3-hover-opacity">
           <h3>Alex Morris</h3>
       <p>User Interface lead</p>
     </div>
 
     <div class="w3-quarter">
-      <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <img src="background/alex.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
       <h3>Kate Van Meter</h3>
       <p>Embedded lead</p>
     </div>
 
     <div class="w3-quarter">
-      <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <img src="background/alex.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
       <h3>Audrey Swart</h3>
       <p>Water Mechanism lead</p>
     </div>
 
     <div class="w3-quarter">
-      <img src="images/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <img src="background/alex.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
       <h3>Sophia Decleene</h3>
       <p>Microphone lead</p>
     </div>

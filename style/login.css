@@ -1,5 +1,5 @@
 body {
-    background-image: url('../images/leaf.avif'); /* Replace 'plant_background.jpg' with your actual background image */
+    background-image: url('../background/leaf.avif'); /* Replace 'plant_background.jpg' with your actual background image */
     background-size: cover;
     font-family:  "Trebuchet MS", Tahoma, sans-serif;
     margin: 10px;
