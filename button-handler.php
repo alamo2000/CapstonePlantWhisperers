@@ -8,13 +8,19 @@ $task_to_update = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-
+  
   if (!empty($_POST['action']) && $_POST['action'] == 'Submit')
   {
     // add a item
     addPlant($_POST['type'],$_POST['name'], $_POST['light'],$_POST['min'], $_POST['max'], $_POST['water']);
     $tasks = getAllPlants();
 
+  }
+
+  else if (!empty($_POST['action']) && $_POST['action'] == 'upload')
+  {
+    addImage($_POST['uploadfile']);
+    $tasks = getAllImages();  
   }
 
   else if (!empty($_POST['action']) && $_POST['action'] == 'Update')

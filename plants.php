@@ -175,6 +175,12 @@
                 selected 
           <?php } ?>  
             > Enter ideal water schedule</option>
+            <option value="everyday"
+            <?php if ($task_to_update != null && $task_to_update['plant_water']=='2-3 days')
+                { ?> 
+                selected 
+          <?php } ?>       
+            >Once a day</option>
             <option value="2-3 days"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='2-3 days')
                 { ?> 
@@ -205,7 +211,7 @@
         
         <label for="image"><h3> Upload Image: </h3></label>
           <input type="file" name="uploadfile" />
-          <input type="submit" name="submit" value="upload" />
+          <input type="submit" name="action" value="upload" />
 
 
         <br>
@@ -222,49 +228,20 @@
 </section>
 
 <!-- Image Placement  -->
-<?php
-  error_reporting(0);
-  
-  $msg = "";
-  
-  // If upload button is clicked ...
-  if (isset($_POST['upload'])) {
-  
-      $filename = $_FILES["uploadfile"]["name"];
-      $tempname = $_FILES["uploadfile"]["tmp_name"];
-      $folder = "./images/" . $filename;
-  
-      global $db;
-      // Get all the submitted data from the form
-      $query = "INSERT INTO 'image' ('filename') VALUES ('$filename')";
-      $statement = $db->prepare($query);
-      // Execute query
-      $statement->execute();
-  
-      // Now let's move the uploaded image into the folder: image
-      if (move_uploaded_file($tempname, $folder)) {
-          echo "<h2>  Image uploaded successfully!</h2>";
-      } else {
-          echo "<h2>  Failed to upload image!</h2>";
-      }
-  }
-?>
+
 
 <div id="display-image">
+  <h4>Image here</h4>
   <?php
-  // Establish a PDO connection to your database
-  global $db;
-    
-  $query = "SELECT filename FROM image";
-  $statement = $db->prepare($query);
-
-  while ($data = $statement->fetchAll()) {
-  ?>
-      <img src="./images/<?php echo $data['filename']; ?>">
-  <?php
-  }
-  ?>
+    // Establish a PDO connection to your database
+    $items = getAllImages(); 
+    foreach ($items as $data): 
+ ?>
+    <img src="images/<?php echo $data['filename']; ?>">
+    <?php endforeach; ?>
 </div>
+
+
 
 <!-- Plant table input -->
 <section>

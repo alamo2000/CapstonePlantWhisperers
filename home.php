@@ -154,7 +154,7 @@
           <p class="w3-opacity w3-center">Plumpy</p>
 
           <hr class="rounded">
-          <p style="text-decoration-line: underline">Status: </p>
+          <p style="text-decoration-line: underline">Recommended : </p>
           <p> Moisture level = 60% </p>
           <p> Temperature = 60 F </p>
           <p> Light level = low  </p>
@@ -179,7 +179,7 @@
           <p> Temperature = 30 F </p>
           <p> Light level = low  </p>
           <p> Time watered = 3:00 pm</p>  
-          <button class="w3-button  w3-theme-dark w3-block">Water me</button></p>
+          <p><button class="w3-button  w3-theme-dark w3-block">Water me</button></p>
         </div>
       </div>
     </div>

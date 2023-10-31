@@ -13,9 +13,7 @@ Start the PHP environment ("Apache Web Server")
 Reminder: be sure to stop the server when you are done. Leaving the servers running consumes energy and may later prevent the servers from starting.
 
 Deploy a PHP app
-Assume your project is named  cs4640,  create a folder called  cs4640.  In the  cs4640  folder, create a blank file named  helloworld.php. Paste the following contents in the file
-<?php echo "Hello World @^_^@" ?>
-Create a directory for your project in  XAMPP/htdocs/. Put  helloworld.php  file under  XAMPP/htdocs/cs4640/
-Access an app
+The project is in a folder named PlantWebsite,
+inside of  XAMPP/htdocs/ directory to access the app
 Be sure to start your web server. To access your app, open a web browser and enter a URL 
-    http://localhost/cs4640/helloworld.php 
+    http://localhost/PlantWebsite/home.php

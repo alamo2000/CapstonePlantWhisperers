@@ -1,32 +1,33 @@
 <?php
-error_reporting(0);
- 
-$msg = "";
- 
-// If Image upload button is clicked ...
-if (isset($_POST['upload'])) {
- 
-    $filename = $_FILES["uploadfile"]["name"];
-    $tempname = $_FILES["uploadfile"]["tmp_name"];
-    $folder = "./image/" . $filename;
- 
-    global $db ;
- 
-    // Get all the submitted data from the form
-    $query = "INSERT INTO 'image' ('filename') VALUES (:fname)";
- 
-    // Execute query
-    $statement = $db->prepare($query);
-    $statement->bindValue(':fname', $filename);
-    $statement->execute();
- 
-    // Now let's move the uploaded image into the folder: image
-    if (move_uploaded_file($tempname, $folder)) {
-        echo "<h3>  Image uploaded successfully!</h3>";
-    } else {
-        echo "<h3>  Failed to upload image!</h3>";
-    }
-}
+  error_reporting(0);
+  
+  $msg = "";
+  
+  // If upload button is clicked ...
+  if (isset($_POST['upload'])) {
+  
+      $filename = $_FILES["uploadfile"]["name"];
+      $tempname = $_FILES["uploadfile"]["tmp_name"];
+      $folder = "images/" . $filename;
+  
+      global $db;
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      // Get all the submitted data from the form
+      $query = "INSERT INTO 'image' ('filename') VALUES (:uimage)";
+      
+      // Execute query
+      $statement = $db->prepare($query);
+      $statement->bindValue(':uimage', $filename);
+      $statement->execute();
+  
+      // Now let's move the uploaded image into the folder: image
+      if (move_uploaded_file($tempname, $folder)) {
+          echo "<Image uploaded successfully!";
+      } else {
+          echo "Failed to upload image!";
+      }
+  }
 ?>
 
 <?php

@@ -14,6 +14,20 @@ function getAllPlants()
    return $results;
 }
 
+function getAllImages()
+{
+   global $db;
+   $query = "select * from image";
+   $statement = $db->prepare($query);
+   $statement->execute();
+
+   $results = $statement->fetchAll();  // retrieve all row
+
+   $statement->closeCursor();
+
+   return $results;
+}
+
 function getPlantInfo_by_name($name)
 {
     global $db;
@@ -42,6 +56,19 @@ function addPlant($type, $name, $light, $min, $max, $water)
     $statement->bindValue(':pmax', $max);
     $statement->bindValue(':pwater', $water);
     
+    $statement->execute();
+    $statement->closeCursor();
+
+}  
+
+function addImage($filename)
+{
+    global $db;
+    // sql
+    $query = "INSERT INTO `image`(`filename`) VALUES (:upimage)";
+   // execute
+    $statement = $db->prepare($query);  
+    $statement->bindValue(':upimage', $filename);   
     $statement->execute();
     $statement->closeCursor();
 
