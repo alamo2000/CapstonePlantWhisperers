@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   if (!empty($_POST['action']) && $_POST['action'] == 'Submit')
   {
     // add a item
-    addPlant($_POST['type'],$_POST['name'], $_POST['light'],$_POST['min'], $_POST['max'], $_POST['water']);
+    addPlant($_POST['type'],$_POST['name'], $_POST['light'],$_POST['min'], $_POST['max'], $_POST['water'],$_POST['uploadfile']);
     $tasks = getAllPlants();
 
   }

@@ -7,7 +7,7 @@
 img{
     margin: 5px;
     width: 350px;
-    height: 250px;
+    height: 300px;
 }
 
 /* form error message */
@@ -135,7 +135,7 @@ body {
 .select-selected {
     font-size: 16px;
     text-align: left;
-    color: rgba(229, 241, 229, 0.821);
+    color: rgba(229, 241, 229, 0.821) !important;
 }
 
 /*style the downward arrow inside the select element:*/

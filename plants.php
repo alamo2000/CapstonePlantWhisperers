@@ -160,12 +160,12 @@
         <?php if (empty($_POST['max'])) { ?> autofocus <?php } ?> 
         /> 
       </div>
-        
+      <br>
       <br>
       <!-- Water drop down menu -->
         <label for="water"><h3>Water Schedule:</h3> </label>
         <!--Error message when field isnt filled out  -->
-        <span class="msg"><?php if (empty($_POST['water'])) echo $water_msg ?></span>
+        <span class="msg"><?php if (isset($_POST['default'])) echo $water_msg ?></span>
   
         <div class="custom-select">
           <select name="water"  class="form-select">
@@ -258,6 +258,7 @@
         <th>Temp min</th>        
         <th>Temp max</th>        
         <th>Water schedule</th> 
+        <th>Image</th> 
         <!-- <th>Image</th> -->
       </tr>
       </thread>
@@ -270,6 +271,7 @@
         <td><?php echo $item['min_temp'] ?></td>
         <td><?php echo $item['max_temp'] ?></td>
         <td><?php echo $item['plant_water'] ?></td>
+        <td><?php echo $item['plant_image'] ?></td>
         
         <td>
           <form action="plants.php" method="post">
