@@ -117,7 +117,7 @@
         /> -->
         <div class="custom-select">
           <select name="light">
-            <option value="default" > Choose Plant Lighting</option>
+            <option value="light_default" > Choose Plant Lighting</option>
             <option value="direct"
             <?php if ($task_to_update != null && $task_to_update['plant_light']=='Direct Lighting')
                 { ?> 
@@ -169,8 +169,8 @@
   
         <div class="custom-select">
           <select name="water"  class="form-select">
-            <option value="default"
-            <?php if ($task_to_update != null && $task_to_update['plant_water']=='default')
+            <option value="water_default"
+            <?php if ($task_to_update != null && $task_to_update['plant_water']=='water_default')
                 { ?> 
                 selected 
           <?php } ?>  
@@ -210,9 +210,7 @@
       
         
         <label for="image"><h3> Upload Image: </h3></label>
-          <input type="file" name="uploadfile" />
-          <input type="submit" name="action" value="upload" />
-
+          <input type="file" style="color: white; font-size: 20px;" name="uploadfile" />
 
         <br>
         <br>
@@ -227,10 +225,7 @@
    </div>
 </section>
 
-<!-- Image Placement  -->
-
-
-<div id="display-image">
+<!-- <div id="display-image">
   <h4>Image here</h4>
   <?php
     // Establish a PDO connection to your database
@@ -239,7 +234,7 @@
  ?>
     <img src="images/<?php echo $data['filename']; ?>">
     <?php endforeach; ?>
-</div>
+</div> -->
 
 
 
@@ -271,8 +266,7 @@
         <td><?php echo $item['min_temp'] ?></td>
         <td><?php echo $item['max_temp'] ?></td>
         <td><?php echo $item['plant_water'] ?></td>
-        <td><?php echo $item['plant_image'] ?></td>
-        
+        <td><img src="images/<?php echo $item['plant_image']; ?>"> </td>
         <td>
           <form action="plants.php" method="post">
             <input type="submit" value="Update" name="action" class="btn btn-primary" />
@@ -280,8 +274,7 @@
             value="<?php echo $item['plant_name'] ?>" 
             />                 
           </form>
-        </td>
-      
+        </td>     
         <td>
           <form action="plants.php" method="post">
             <input type="submit" value="Delete" name="action" class="btn btn-danger" />

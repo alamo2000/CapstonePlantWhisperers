@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div class="row">
+    <div class="row">`
 
         <div class="title">
             <h1 >  Plant Whisperers</h1>

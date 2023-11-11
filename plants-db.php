@@ -42,11 +42,11 @@ function getPlantInfo_by_name($name)
     return $results; 
 }
 
-function addPlant($type, $name, $light, $min, $max, $water)
+function addPlant($type, $name, $light, $min, $max, $water, $image)
 {
     global $db;
     // sql
-    $query = "INSERT INTO `plant`(`plant_type` , `plant_name` , `plant_light`, `min_temp`, `max_temp` , `plant_water`) VALUES (:ptype, :pname, :plight, :pmin, :pmax, :pwater)";
+    $query = "INSERT INTO `plant`(`plant_type` , `plant_name` , `plant_light`, `min_temp`, `max_temp` , `plant_water`, `plant_image` ) VALUES (:ptype, :pname, :plight, :pmin, :pmax, :pwater, :upimage)";
    // execute
     $statement = $db->prepare($query);  
     $statement->bindValue(':ptype', $type);
@@ -55,31 +55,32 @@ function addPlant($type, $name, $light, $min, $max, $water)
     $statement->bindValue(':pmin', $min);
     $statement->bindValue(':pmax', $max);
     $statement->bindValue(':pwater', $water);
+    $statement->bindValue(':upimage', $image);   
     
     $statement->execute();
     $statement->closeCursor();
 
 }  
 
-function addImage($filename)
-{
-    global $db;
-    // sql
-    $query = "INSERT INTO `image`(`filename`) VALUES (:upimage)";
-   // execute
-    $statement = $db->prepare($query);  
-    $statement->bindValue(':upimage', $filename);   
-    $statement->execute();
-    $statement->closeCursor();
+// function addImage($filename)
+// {
+//     global $db;
+//     // sql
+//     $query = "INSERT INTO `image`(`filename`) VALUES (:upimage)";
+//    // execute
+//     $statement = $db->prepare($query);  
+//     $statement->bindValue(':upimage', $filename);   
+//     $statement->execute();
+//     $statement->closeCursor();
 
-}  
+// }  
 
-function updatePlant( $type, $name, $light, $min, $max, $water)
+function updatePlant( $type, $name, $light, $min, $max, $water, $image)
 {
 	// db handler
     global $db;
     // sql
-    $query = "UPDATE plant SET plant_type=:ptype , plant_name=:pname, plant_light=:plight, min_temp=:pmin, max_temp=:pmax, plant_water=:pwater WHERE plant_name=:pname";
+    $query = "UPDATE plant SET plant_type=:ptype , plant_name=:pname, plant_light=:plight, min_temp=:pmin, max_temp=:pmax, plant_water=:pwater, plant_image=:upimage WHERE plant_name=:pname";
 
     // execute
     $statement = $db->prepare($query);  
@@ -89,6 +90,7 @@ function updatePlant( $type, $name, $light, $min, $max, $water)
     $statement->bindValue(':pmin', $min);
     $statement->bindValue(':pmax', $max);
     $statement->bindValue(':pwater', $water);
+    $statement->bindValue(':upimage', $image);  
     $statement->execute();
 
     $statement->closeCursor();

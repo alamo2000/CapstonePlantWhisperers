@@ -17,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
   }
 
-  else if (!empty($_POST['action']) && $_POST['action'] == 'upload')
-  {
-    addImage($_POST['uploadfile']);
-    $tasks = getAllImages();  
-  }
+  // else if (!empty($_POST['action']) && $_POST['action'] == 'upload')
+  // {
+  //   addImage($_POST['uploadfile']);
+  //   $tasks = getAllImages();  
+  // }
 
   else if (!empty($_POST['action']) && $_POST['action'] == 'Update')
   {
@@ -69,12 +69,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $name = trim($_POST['name']);
   }
   
-  if (($_POST['light']== "default"))
-    $light_msg = "Please enter light ";
-  else
-  {
-    $light = trim($_POST['light']);
-  }
+  // if (($_POST['light']))
+  //   $light_msg = "Please enter light ";
+  // else
+  // {
+  //   $light = trim($_POST['light']);
+  // }
 
 
   if (empty($_POST['max'] &&  empty($_POST['min'])))
@@ -85,12 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $min = trim($_POST['min']);
   }
 
-  if (empty($_POST['water']))
-  $water_msg = "Please enter the water schedule"; 
-  else
-  {
-    $water= trim($_POST['water']);
-  }
+  // if (($_POST['water']))
+  // $water_msg = "Please enter the water schedule"; 
+  // else
+  // {
+  //   $water= trim($_POST['water']);
+  // }
 
 }
 ?> 
