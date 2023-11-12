@@ -122,8 +122,7 @@
 <br>
 
 <!-- Plant Icons -->
-</div>
-  
+
 <!-- Icon 1 Cactus -->
   <div class="w3-quarter">
 	<div class="w3-card w3-theme-d1">
@@ -167,21 +166,21 @@
   <!-- Icon 3 Bamboo -->
   <div class="w3-quarter">
 	<div class="w3-card w3-theme-d1">
-    <!-- src="images/bambooo.avif" -->
-        <img src="images/pothos.webp" alt="Jane" style="width:100% ;height:100%;">
-        <div class="w3-container">
-          <h3 class="w3-center">Pothos</h3>
-          <p class="w3-opacity w3-center">Pothey</p>
+  <!-- src="images/bambooo.avif" -->
+      <img src="images/pothos.webp" alt="Jane" style="width:100% ;height:100%;">
+      <div class="w3-container">
+        <h3 class="w3-center">Pothos</h3>
+        <p class="w3-opacity w3-center">Pothey</p>
 
-          <hr class="rounded">
-          <p style="text-decoration-line: underline">Status: </p>
-          <p> Moisture level = 80% </p>
-          <p> Temperature = 30 F </p>
-          <p> Light level = low  </p>
-          <p> Time watered = 3:00 pm</p>  
-          <p><button class="w3-button  w3-theme-dark w3-block">Water me</button></p>
-        </div>
+        <hr class="rounded">
+        <p style="text-decoration-line: underline">Status: </p>
+        <p> Moisture level = 80% </p>
+        <p> Temperature = 30 F </p>
+        <p> Light level = low  </p>
+        <p> Time watered = 3:00 pm</p>  
+        <p><button class="w3-button  w3-theme-dark w3-block">Water me</button></p>
       </div>
+    </div>
     </div>
 
  </div>

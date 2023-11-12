@@ -17,11 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
   }
 
-  // else if (!empty($_POST['action']) && $_POST['action'] == 'upload')
-  // {
-  //   addImage($_POST['uploadfile']);
-  //   $tasks = getAllImages();  
-  // }
 
   else if (!empty($_POST['action']) && $_POST['action'] == 'Update')
   {
@@ -41,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
   if (!empty($_POST['action']) && $_POST['action'] == 'Confirm update')
   {
-    updatePlant($_POST['type'],$_POST['name'], $_POST['light'],$_POST['min'], $_POST['max'], $_POST['water']);
+    updatePlant($_POST['type'],$_POST['name'], $_POST['light'],$_POST['min'], $_POST['max'], $_POST['water'],$_POST['uploadfile']);
     $tasks = getAllPlants();
   }
 }
@@ -69,12 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $name = trim($_POST['name']);
   }
   
-  // if (($_POST['light']))
-  //   $light_msg = "Please enter light ";
-  // else
-  // {
-  //   $light = trim($_POST['light']);
-  // }
+  if (($_POST['light']))
+    $light_msg = "Please enter light ";
+  else
+  {
+    $light = trim($_POST['light']);
+  }
 
 
   if (empty($_POST['max'] &&  empty($_POST['min'])))
