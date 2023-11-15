@@ -67,13 +67,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     }
     
     $light = $_POST['light'];
-    if ($light == 'light_default'){
-      $light_msg = "Please enter light preferences ";
+    if ($light == "light_default"){
+      $light_msg = "Please enter light preferences";
     }
     else {
       $light = trim($_POST['light']);
     }
 
+    $water = $_POST['water'];
+    if ($water == "water_default"){
+      $water_msg = "Please enter the water schedule"; 
+    }
+    else {
+      $water= trim($_POST['water']);
+    }
 
     if (empty($_POST['min']) &&  empty($_POST['max'])){
       $temp_msg = "Please enter the temperature";
@@ -81,14 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     else {
       $max= trim($_POST['max']);
       $min = trim($_POST['min']);
-    }
-
-    $water = $_POST['water'];
-    if ($water == 'water_default'){
-      $water_msg = "Please enter the water schedule"; 
-    }
-    else {
-      $water= trim($_POST['water']);
     }
   }
 }

@@ -143,14 +143,13 @@
        <!--Error message when field isnt filled out  -->
        <span class="msg"><?php if (empty($_POST['min'])) echo $temp_msg ?></span>
        
-     <!-- Min Temperature -->   
+     
      <div>  
-         <!--php to register min temperature settings of plant--> 
+      <!-- Min Temperature -->   
        <input  name="min" type="text" class="temp-input" placeholder="min temp"  style="float:left"
         value="<?php if ($task_to_update != null) echo $task_to_update['min_temp']; 
             elseif (isset($_GET['min'])) echo $_GET['min']; ?>"
-        <?php if (empty($_POST['min'])) { ?> autofocus <?php } ?> 
-        /> 
+        <?php if (empty($_POST['min'])) { ?> autofocus <?php } ?>  /> 
         
       <!-- Max Temperature -->
         <input name="max" type="text" class="temp-input" placeholder="max temp"  style="float:right"
@@ -168,11 +167,7 @@
 
         <div class="custom-select">
           <select name="water"  class="form-select">
-            <option value="water_default"
-            <?php if ($task_to_update != null && $task_to_update['plant_water']=='water_default')
-                { ?> 
-                selected 
-          <?php } ?>> Enter ideal water schedule</option>
+            <option value="water_default"> Enter ideal water schedule</option>
             <option value="Everyday"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='Everyday')
                 { ?> 
