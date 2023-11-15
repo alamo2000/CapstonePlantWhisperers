@@ -22,7 +22,7 @@
 <!-- Menu bar -->
 <div class="w3-top">
 
-  <div class="w3-bar w3-large w3-theme-d3 w3-left-align">
+  <div class="w3-bar w3-xlarge w3-theme-d3 w3-left-align">
     <!-- Home button -->
     <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
     <!-- My plants tab -->
@@ -34,7 +34,7 @@
       <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
       <a href="help.html" class="w3-bar-item w3-button">Help</a>
       <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
-      <a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
+      <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
     </div>
   </div>
 
@@ -85,56 +85,58 @@
      
       <!-- Type -->
         <label for="type"><h3>Type of Plant:</h3></label>    
-          <!--php to register type of plant--> 
+        <!--Error message when field isnt filled out  -->
+        <span class="msg"><?php if (empty($_POST['type'])) echo $type_msg ?></span>
+
+        <!--php to register type of plant--> 
         <input name="type"  type="text" class="input" placeholder="Type of plant" 
           value="<?php if ($task_to_update != null) echo $task_to_update['plant_type'];
             elseif (isset($_GET['type'])) echo $_GET['type']; ?>"
           <?php if (empty($_POST['type'])) { ?> autofocus <?php } ?> 
           /> 
-         <!--Error message when field isnt filled out  -->
-         <span class="msg"><?php if (empty($_POST['type'])) echo $type_msg ?></span>
-      
+
 
       <!-- Name -->
         <label for="name"><h3>Name of Plant:</h3></label>  
-         <!--php to register name of plant--> 
+        <!--Error message when field isnt filled out  -->
+        <span class="msg"><?php if (empty($_POST['name'])) echo $name_msg ?></span>
+
+        <!--php to register name of plant--> 
         <input name="name"  type="text" class="input" placeholder="Plant nickname"  
         value="<?php if ($task_to_update != null) echo $task_to_update['plant_name']; 
             elseif (isset($_GET['name'])) echo $_GET['name']; ?>"
         <?php if (empty($_POST['name'])) { ?> autofocus <?php } ?> 
         /> 
-        <!--Error message when field isnt filled out  -->
-        <span class="msg"><?php if (empty($_POST['name'])) echo $name_msg ?></span>
-       
       
       <!-- Light -->
         <label for="light"><h3>Light Preferences:</h3></label>  
-        <div class="custom-select">
-          <select name="light">
-            <option value="light_default" > Choose Plant Lighting</option>
-            <option value="Direct"
-            <?php if ($task_to_update != null && $task_to_update['plant_light']=='Direct Lighting')
-                { ?> 
-                selected 
-          <?php } ?>  
-            > Direct Sunlight</option>
-            <option value="Indirect"
-            <?php if ($task_to_update != null && $task_to_update['plant_light']=='Indirect Lighting')
-                { ?> 
-                selected 
-          <?php } ?>  
-            >Indirect Sunlight  </option>
-            <option value="Little to No Light"
-            <?php if ($task_to_update != null && $task_to_update['plant_light']=='Little to No Lighting')
-                { ?> 
-                selected 
-          <?php } ?>  
-            >Little to No Lighting</option>
-                </select>
-        </div>
         <!--Error message when field isnt filled out  -->
         <span class="msg"><?php if (empty($_POST['light_default'])) echo $light_msg ?></span>
 
+        <div class="custom-select">
+        <select name="light">
+          <option value="light_default" > Choose Plant Lighting</option>
+          
+          <option value="Direct"
+          <?php if ($task_to_update != null && $task_to_update['plant_light']=='Direct')
+            { ?> 
+            selected 
+          <?php } ?>> Direct Sunlight</option>
+
+          <option value="Indirect"
+          <?php if ($task_to_update != null && $task_to_update['plant_light']=='Indirect')
+            { ?> 
+            selected 
+          <?php } ?>>Indirect Sunlight </option>
+
+          <option value="Little to No Light"
+          <?php if ($task_to_update != null && $task_to_update['plant_light']=='Little to No Light')
+          { ?> 
+           selected 
+          <?php } ?>>Little to No Lighting </option>
+          
+        </select>
+        </div>
 
       <!-- Temp -->
        <label for="min"><h3>Temperature Conditions:</h3></label>
@@ -157,50 +159,45 @@
         <?php if (empty($_POST['max'])) { ?> autofocus <?php } ?> 
         /> 
       </div>
-
+      <br>
+      <br>
       <!-- Water drop down menu -->
         <label for="water"><h3>Water Schedule:</h3> </label>
         <!--Error message when field isnt filled out  -->
         <span class="msg"><?php if (isset($_POST['water_default'])) echo $water_msg ?></span>
-  
+
         <div class="custom-select">
           <select name="water"  class="form-select">
             <option value="water_default"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='water_default')
                 { ?> 
                 selected 
-          <?php } ?>  
-            > Enter ideal water schedule</option>
+          <?php } ?>> Enter ideal water schedule</option>
             <option value="Everyday"
-            <?php if ($task_to_update != null && $task_to_update['plant_water']=='2-3 days')
+            <?php if ($task_to_update != null && $task_to_update['plant_water']=='Everyday')
                 { ?> 
                 selected 
-          <?php } ?>       
-            >Once a day</option>
+          <?php } ?>>Once a day</option>
             <option value="2-3 days"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='2-3 days')
                 { ?> 
                 selected 
-          <?php } ?>       
-            >Every 2-3 days</option>
+          <?php } ?>>Every 2-3 days</option>
             <option value="Once a week"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='Once a week')
                 { ?> 
                 selected 
-          <?php } ?>  
-            >Once a week</option>
+          <?php } ?>>Once a week</option>
             <option value="Biweekly"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='Biweekly')
                 { ?> 
                 selected 
-          <?php } ?>  
-            > Every 2 weeks</option>
+          <?php } ?>> Every 2 weeks</option>
             <option value="Dry"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='Idk')
                 { ?> 
                 selected 
-          <?php } ?>  
-            > Idk when soil is dry</option>
+          <?php } ?>> Idk when soil is dry</option>
           </select>
         </div>
       
@@ -220,55 +217,6 @@
     </div>
    </div>
 </section>
-
-
-  <!-- Plant icons -->
-<?php
-  // Establish a PDO connection to your database
-  global $db;
-  $query = 'SELECT `plant_type` , `plant_name` , `plant_light`, `min_temp`, `max_temp` , `plant_water`, `plant_image`  FROM plant ORDER BY id';
-  $result = $db->query($query);
-
-  
-  if ($result->rowCount() > 0) {
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?> 
-    
-    <div class="w3-quarter">
-    <div class="w3-card w3-theme-d1">
-      <img src="images/<?php echo $row['plant_image']; ?>" style="width:98%;height:100%;">
-      
-      <h3 class="text-align:center;">
-      <?php echo  $row['plant_type'] ?></h3>
-
-      <h4 class="w3-opacity w3-center">
-     <?php echo  $row['plant_name'] ?></h4>
-      <hr class="rounded">
-
-      <p style="text-decoration-line: underline">
-      Recommended Settings: </p>
-      
-      <p> Lighting level= <?php echo  ($row['plant_light']) ?> </p>
-      <p> Temperature range = <?php echo  ($row['min_temp']) ?> - <?php echo  ($row['max_temp']) ?> </p>    
-      <p> Water schedule = <?php echo  ($row['plant_water']) ?> </p>
-      <br>
-
-      <form action="plants.php" method="post">
-            <input type="submit" value="Update" name="action" class=" w3-theme-dark w3-block" />
-            <input type="hidden" name="plant_to_update" 
-            value="<?php echo $row['plant_name'] ?>" 
-            />                 
-      </form>
-      
-      <form action="plants.php" method="post">
-            <input type="submit" value="Delete" name="action" class=" w3-theme-dark w3-block" />
-            <input type="hidden" name="plant_to_delete" 
-            value="<?php echo $row['plant_name'] ?>" 
-            />                 
-      </form>
-      
-    </div>
-  </div>
-<?php endwhile; }?>
 
 
 

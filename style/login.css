@@ -50,12 +50,12 @@ a {
 }
 
 .login-container {
-    width: 320px; /* Set a maximum width for the login container */
+    width: 350px; /* Set a maximum width for the login container */
     height: 380px;
     margin: 0 center;
     position: fixed;
     top: 35%; /* Position it at the top of the viewport */
-    left: 40%; /* Align it to the left */
+    left: 45%; /* Align it to the left */
     background-color:	#339933b1; /* Semi-transparent green background for better readability */
     border-radius: 30px;
     padding: 10px;

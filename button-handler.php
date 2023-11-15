@@ -50,42 +50,46 @@ $type_msg = $name_msg = $light_msg = $temp_msg= $water_msg = NULL;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-  if (empty($_POST['type']))
-    $type_msg = "Please enter the type of plant";
-  else
+  if (!empty($_POST['action']) && $_POST['action'] == 'Submit')
   {
-    $type = trim($_POST['type']);
+    if (empty($_POST['type'])){
+      $type_msg = "Please enter the type of plant";
+    }
+    else{
+      $name = trim($_POST['type']);
+    }
+
+    if (empty($_POST['name'])){
+      $name_msg = "Please enter the name of the plant";
+    }
+    else{
+      $name = trim($_POST['name']);
+    }
+    
+    $light = $_POST['light'];
+    if ($light == 'light_default'){
+      $light_msg = "Please enter light preferences ";
+    }
+    else {
+      $light = trim($_POST['light']);
+    }
+
+
+    if (empty($_POST['min']) &&  empty($_POST['max'])){
+      $temp_msg = "Please enter the temperature";
+    } 
+    else {
+      $max= trim($_POST['max']);
+      $min = trim($_POST['min']);
+    }
+
+    $water = $_POST['water'];
+    if ($water == 'water_default'){
+      $water_msg = "Please enter the water schedule"; 
+    }
+    else {
+      $water= trim($_POST['water']);
+    }
   }
-
-  if (empty($_POST['name']))
-    $name_msg = "Please enter the name of the plant";
-  else
-  {
-    $name = trim($_POST['name']);
-  }
-  
-  if (($_POST['light']))
-    $light_msg = "Please enter light ";
-  else
-  {
-    $light = trim($_POST['light']);
-  }
-
-
-  if (empty($_POST['max'] &&  empty($_POST['min'])))
-    $temp_msg = "Please enter the temperature";
-  else
-  {
-    $max= trim($_POST['max']);
-    $min = trim($_POST['min']);
-  }
-
-  // if (($_POST['water']))
-  // $water_msg = "Please enter the water schedule"; 
-  // else
-  // {
-  //   $water= trim($_POST['water']);
-  // }
-
 }
 ?> 

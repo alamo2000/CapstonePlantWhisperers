@@ -27,7 +27,7 @@ h4{
 }
 
 p{
-  font-size: 16px;
+  font-size: 20px;
   color: rgba(214, 236, 215, 0.793);
   text-align: center;
 }
@@ -45,12 +45,9 @@ span{
 body {
   font-family:  "Trebuchet MS", Tahoma, sans-serif;
   margin: 5px;
-  background-color: #052513eb;
+  background-color: #072e18;
 }
 
-.backgroundDark{
-  background-color: #072e18;;
-}
 
 .formContainer{
   width: 50%; /* Set a maximum width for the login container */
@@ -59,7 +56,7 @@ body {
   position: relative;
   left: 24%;
   border-radius: 30px;
-  padding: 30px;
+  padding: 40px;
   box-shadow: 20px 20px 20px 20px rgba(0, 19, 4, 0.673);
   text-align: center;
   border-color: #052513dd;
@@ -103,7 +100,7 @@ body {
   padding: 0 10px;
   max-height: 0;
   position: relative;
-  left: 30px;
+  left: 7%;
   width: 90%;
   overflow: hidden;
   transition: max-height 0.2s ease-out;

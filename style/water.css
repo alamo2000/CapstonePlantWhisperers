@@ -21,26 +21,24 @@ h2{
   text-shadow: 1px 1px 1px #000000; 
 }
 
-
+li{
+  font-size: 20px;
+  color: rgba(214, 236, 215, 0.793);
+}
 
 p{
-  font-size: 16px;
+  font-size: 20px;
   color: rgba(214, 236, 215, 0.793);
   text-align: center;
 }
 
-span{
-  font-size: 17px;
-  color: white;
-
-}
 
 .formContainer{
   width: 40% !important; /* Set a maximum width for the login container */
-  height: 90%;
+  height: 100%;
   margin: 10px center;
   position: relative;
-  left: 24%;
+  left: 5%;
   border-radius: 30px;
   padding: 30px;
   box-shadow: 20px 20px 20px 20px rgba(0, 19, 4, 0.673);
@@ -58,11 +56,7 @@ span{
 body {
   font-family:  "Trebuchet MS", Tahoma, sans-serif;
   margin: 5px;
-  background-color: #052513eb;
-}
-
-.backgroundDark{
-  background-color: #072e18;;
+  background-color: #072e18;
 }
 
 

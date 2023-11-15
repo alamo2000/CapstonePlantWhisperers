@@ -35,7 +35,7 @@
 
 <!-- Menu bar -->
 <div class="w3-top">
-<div class="w3-bar w3-large w3-theme-d3 w3-left-align">
+<div class="w3-bar w3-xlarge w3-theme-d3 w3-left-align">
   <!-- Home button -->
   <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
   <!-- My plants tab -->
@@ -75,7 +75,7 @@
 <div class="w3-display-container w3-center title w3-animate-opacity ">
     <!-- background image -->
   <br>
-  <h4 style="text-align: left;">Welcome, <font color="Green" style="font-style:verdana; "><?php echo $_COOKIE['user'] ?></font></h4>
+  <h4 style="text-align: left;">Welcome, <strong><font color="Green" style="font-style:verdana; font-size: 20px; "><?php echo $_COOKIE['user'] ?></font></strong></h4>
   <img src="background/wet.jpeg" alt="boat" style="width:100%;min-height:350px;max-height:400px;opacity:0.5">
 
 
@@ -110,21 +110,21 @@
 <!-- Virtual Green House -->
 <div class="w3-row-padding w3-padding-64 w3-theme-d5" id="plants">
 
-<div class="w3-quarter">
-<h2>MY PLANTS</h2>
-<br>
-<div class="welcome">
-  <h4><b>Welcome to your <br> GreenHouse</b></h4>
-  <p> > Click on plant icon to check status  <br>
-      > press  water me to manually water your plant 
-  </p>
-</div>
-<br>
+  <div class="w3-quarter">
+  <h2>MY PLANTS</h2>
+  <br>
+  <div class="welcome">
+    <h4><b>Welcome to your <br> GreenHouse</b></h4>
+    <p> > Click on plant icon to check status  <br>
+        > press  water me to manually water your plant 
+    </p>
+  </div>
+  <br> 
+  </div>
 
-<!-- Plant Icons -->
 
 <!-- Icon 1 Cactus -->
-  <div class="w3-quarter">
+  <!-- <div class="w3-quarter">
 	<div class="w3-card w3-theme-d1">
         <img src="images/cactus.jpeg" alt="John" style="width:100%;height:100%;">
         <div class="w3-container">
@@ -133,55 +133,64 @@
 
           <hr class="rounded">
           <p style="text-decoration-line: underline">Status: </p>
-          <!-- Ideally will read moisure sensor data and display -->
+           
           <p> Moisture level = 20% </p>
           <p> Temperature = 30 F </p>
           <p> Light level = Low  </p>
           <p> Time watered = 3:00 pm</p>
-          <!-- Water button needs to had software to connect button to pump -->
-          <p><button class="w3-button w3-theme-dark w3-block">Water me</button></p>
+           <p><button class="w3-button w3-theme-dark w3-block">Water me</button></p>
         </div>
       </div>
-    </div>
+</div> -->
 
-<!-- Icon 2 Tomato -->
+
+<!-- Plant Icons -->
+<?php
+  // Establish a PDO connection to your database
+  global $db;
+  $query = 'SELECT `plant_type` , `plant_name` , `plant_light`, `min_temp`, `max_temp` , `plant_water`, `plant_image`  FROM plant ORDER BY id';
+  $result = $db->query($query);
+  
+  if ($result->rowCount() > 0) {
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?> 
+  
   <div class="w3-quarter">
-	<div class="w3-card w3-theme-d1">
-        <img src="images/tomatooo.jpeg" alt="Mike" style="width:100%;height:100%;">
-        <div class="w3-container">
-          <h3 class="w3-center">Tomato</h3>
-          <p class="w3-opacity w3-center">Plumpy</p>
+    <div class="formContainer">
+      <img src="images/<?php echo $row['plant_image']; ?>" style="width:100%;height:100%;">
+      
+      <h3 style="text-align:center;">
+      <?php echo  $row['plant_type'] ?></h3>
 
-          <hr class="rounded">
-          <p style="text-decoration-line: underline">Recommended : </p>
-          <p> Moisture level = 60% </p>
-          <p> Temperature = 60 F </p>
-          <p> Light level = low  </p>
-          <p> Time watered = 10:00 am</p>
-          <p><button class="w3-button w3-theme-dark w3-block">Water me</button></p>
-        </div>
-      </div>
-    </div>
+      <h4 class="w3-opacity w3-center">
+     <?php echo  $row['plant_name'] ?></h4>
 
-  <!-- Icon 3 Bamboo -->
-  <div class="w3-quarter">
-	<div class="w3-card w3-theme-d1">
-  <!-- src="images/bambooo.avif" -->
-      <img src="images/pothos.webp" alt="Jane" style="width:100% ;height:100%;">
-      <div class="w3-container">
-        <h3 class="w3-center">Pothos</h3>
-        <p class="w3-opacity w3-center">Pothey</p>
+      <hr class="rounded">
 
-        <hr class="rounded">
-        <p style="text-decoration-line: underline">Status: </p>
-        <p> Moisture level = 80% </p>
-        <p> Temperature = 30 F </p>
-        <p> Light level = low  </p>
-        <p> Time watered = 3:00 pm</p>  
-        <p><button class="w3-button  w3-theme-dark w3-block">Water me</button></p>
-      </div>
+      <p style="text-decoration-line: underline">
+      Recommended Settings: </p>
+      
+      <p> Lighting level= <?php echo  ($row['plant_light']) ?> </p>
+      <p> Temperature range = <?php echo  ($row['min_temp']) ?> - <?php echo  ($row['max_temp']) ?> </p>    
+      <p> Water schedule = <?php echo  ($row['plant_water']) ?> </p>
+      <br>
+
+      <form action="plants.php" method="post">
+            <input type="submit" value="Update" name="action" class=" w3-button w3-theme-d4 w3-block" />
+            <input type="hidden" name="plant_to_update" 
+            value="<?php echo $row['plant_name'] ?>" 
+            />                 
+      </form>
+      <br>
+      <form action="plants.php" method="post">
+        <input type="submit" value="Delete" name="action" class="w3-button w3-theme-d4 w3-block" />
+        <input type="hidden" name="plant_to_delete" 
+        value="<?php echo $row['plant_name'] ?>"    />                 
+      </form>
+      
     </div>
-    </div>
+  </div>
+<?php endwhile; }?>
+
 
  </div>
 
