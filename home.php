@@ -175,13 +175,13 @@
       <br>
 
       <form action="plants.php" method="post">
-            <input type="submit" value="Update" name="action" class=" w3-button w3-theme-d4 w3-block" />
+            <input type="submit" value="Update" name="action" class=" w3-button w3-theme-d1 w3-block" />
             <input type="hidden" name="plant_to_update" 
             value="<?php echo $row['plant_name'] ?>" 
             />                 
       </form>
       <br>
-      <form action="plants.php" method="post">
+      <form action="home.php" method="post">
         <input type="submit" value="Delete" name="action" class="w3-button w3-theme-d4 w3-block" />
         <input type="hidden" name="plant_to_delete" 
         value="<?php echo $row['plant_name'] ?>"    />                 

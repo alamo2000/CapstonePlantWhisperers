@@ -23,8 +23,8 @@ CREATE TABLE plant (
     plant_light varchar(100),
     min_temp int(11),
     max_temp int(11),
-    plant_water varchar(100)
-    plant_image varchar(100)
+    plant_water varchar(100),
+    plant_image varchar(100),
     PRIMARY KEY(id)
 );
 

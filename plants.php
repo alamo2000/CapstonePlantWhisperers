@@ -77,7 +77,7 @@
     
     <div class="formContainer">
       <h2><b>DETAILS</b></h2>
-      <p>To get started fill out the form below to register your plant and add it to the virtual green house which can be shown on the home page. Setting the water peferences will help water plant on a schedule if sensors don't work</p>
+      <p>To get started fill out the form below to register your plant and add it to the virtual green house which can be shown on the home page.</p>
       <br>
 
       <!--Start of the form   -->
@@ -172,22 +172,22 @@
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='Everyday')
                 { ?> 
                 selected 
-          <?php } ?>>Once a day</option>
+          <?php } ?>> Once a day </option>
             <option value="2-3 days"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='2-3 days')
                 { ?> 
                 selected 
-          <?php } ?>>Every 2-3 days</option>
+          <?php } ?>> Every 2-3 days </option>
             <option value="Once a week"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='Once a week')
                 { ?> 
                 selected 
-          <?php } ?>>Once a week</option>
+          <?php } ?>> Once a week </option>
             <option value="Biweekly"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='Biweekly')
                 { ?> 
                 selected 
-          <?php } ?>> Every 2 weeks</option>
+          <?php } ?>> Every 2 weeks </option>
             <option value="Dry"
             <?php if ($task_to_update != null && $task_to_update['plant_water']=='Idk')
                 { ?> 
@@ -202,11 +202,14 @@
 
         <br>
         <br>
-        <input type="submit" value="Submit" name="action" class="input" />
-        </br>
-        <input type="submit" value="Confirm update" name="action" class="input" />
-        </br>
+        <form method="POST" action="home.php">
+          <input type="submit" value="Submit" name="action" class="input" />
+        </form>
+      </br>
+      <form method="POST" action="home.php">
+        <input type="submit" value="Confirm update" name="action" class="input" />      
       </form>
+      </br>
       <br>
       <br>
     </div>
