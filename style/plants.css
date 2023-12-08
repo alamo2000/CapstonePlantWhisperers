@@ -57,8 +57,8 @@ p{
 body {
     font-family:  "Trebuchet MS", Tahoma, sans-serif;
     margin: 5px;
-    /* background-color: #052513eb;   */
-    background-color: #fff;  
+    background-color: #052513eb;  
+    /* background-color: #fff;   */
 }
 
 /* rectangular border around form */

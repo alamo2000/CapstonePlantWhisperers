@@ -55,7 +55,7 @@ a {
     margin: 0 center;
     position: fixed;
     top: 35%; /* Position it at the top of the viewport */
-    left: 35%; /* Align it to the left */
+    left: 40%; /* Align it to the left */
     background-color:	#339933b1; /* Semi-transparent green background for better readability */
     border-radius: 30px;
     padding: 10px;

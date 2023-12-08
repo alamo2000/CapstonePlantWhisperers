@@ -26,8 +26,12 @@ h4{
 }
 
 p{
-    font-size: 25px;
-    color: rgba(9, 37, 9, 0.856);
+    font-size: 20px;
+    color: rgb(3, 27, 3);
+}
+
+.a{
+    color: rgb(253, 255, 253);
 }
 
 
@@ -73,11 +77,11 @@ body {
 .formContainer{
 
     width: 90%; /* Set a maximum width for the login container */
-    height: 80%;
+    height: 50%;
     position: relative;
     left: 10%;
     padding: 20px;
-    box-shadow: 20px 20px 20px 20px rgba(0, 19, 4, 0.673);
+    box-shadow: 10px 10px 10px 10px rgba(2, 36, 9, 0.673);
     text-align: center;
     background-color: #3ba34ba5;
     border-color: #072e18;
