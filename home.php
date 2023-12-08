@@ -37,16 +37,10 @@
 <div class="w3-top">
 <div class="w3-bar w3-xlarge w3-theme-d3 w3-left-align">
   <!-- Home button -->
-  <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
-  <!-- My plants tab -->
-  <a href="plants.php" class="w3-bar-item w3-button w3-hide-small w3-hover-green">My Plants</a>
-  <!-- Setting drop down menu -->
-  <div class="w3-dropdown-hover w3-hide-small ">
-  <button class="w3-button " title="Notifications">Settings <i class="fa fa-caret-down"></i></button>
-  <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-    <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
+    <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
+  
+    <a href="plants.php" class="w3-bar-item w3-button w3-hide-small w3-hover-green">My Plants</a>
     <a href="help.html" class="w3-bar-item w3-button">Help</a>
-    <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
     <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
   </div>
   
@@ -115,33 +109,12 @@
   <br>
   <div class="welcome">
     <h4><b>Welcome to your <br> GreenHouse</b></h4>
-    <p> > Click on plant icon to check status  <br>
-        > press  water me to manually water your plant 
-    </p>
+    <p> > Click status link to check real time sensor data </p>
+    <p> > To access the water button click status link </p>
   </div>
   <br> 
   </div>
 
-
-<!-- Icon 1 Cactus -->
-  <!-- <div class="w3-quarter">
-	<div class="w3-card w3-theme-d1">
-        <img src="images/cactus.jpeg" alt="John" style="width:100%;height:100%;">
-        <div class="w3-container">
-          <h3 class="w3-center">Cactus</h3>
-          <p class="w3-opacity w3-center">Prickly</p>
-
-          <hr class="rounded">
-          <p style="text-decoration-line: underline">Status: </p>
-           
-          <p> Moisture level = 20% </p>
-          <p> Temperature = 30 F </p>
-          <p> Light level = Low  </p>
-          <p> Time watered = 3:00 pm</p>
-           <p><button class="w3-button w3-theme-dark w3-block">Water me</button></p>
-        </div>
-      </div>
-</div> -->
 
 
 <!-- Plant Icons -->
@@ -162,14 +135,18 @@
       <?php echo  $row['plant_type'] ?></h3>
 
       <h4 class="w3-opacity w3-center">
-     <?php echo  $row['plant_name'] ?></h4>
-
+     Nickname: <?php echo  $row['plant_name'] ?></h4>
+     <hr class="rounded">
+     <p > <b> Check Plant Status:</b> </p>
+      
+      <p> <a href="https://hosting.systemlinkcloud.io/webapps/dcd56321-430c-4d11-b529-765651aa9fde/content/ni-paths-NISHAREDDIR64/Web%20Server/htdocs/WebApp/index.html">Access sensors</a> <p>
       <hr class="rounded">
 
-      <p style="text-decoration-line: underline">
-      Recommended Settings: </p>
+      <!-- <p style="text-decoration-line: underline">
+      -->
+      <p><b>Recommended Settings: </b></p> 
       
-      <p> Lighting level= <?php echo  ($row['plant_light']) ?> </p>
+      <p> Lighting level = <?php echo  ($row['plant_light']) ?> </p>
       <p> Temperature range = <?php echo  ($row['min_temp']) ?> - <?php echo  ($row['max_temp']) ?> </p>    
       <p> Water schedule = <?php echo  ($row['plant_water']) ?> </p>
       <br>
@@ -208,27 +185,27 @@
   <div class="w3-row"><br>
 
     <div class="w3-quarter">
-      <img src="background/alex.png" alt="Boss" style="width:45%; " class="w3-circle w3-hover-opacity">
+      <img src="background/Alexm.png" alt="Boss" style="width:45%; " class="w3-circle w3-hover-opacity">
           <h3>Alex Morris</h3>
       <p>User Interface lead</p>
     </div>
 
     <div class="w3-quarter">
-      <img src="background/alex.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <img src="background/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
       <h3>Kate Van Meter</h3>
       <p>Embedded lead</p>
     </div>
 
     <div class="w3-quarter">
-      <img src="background/alex.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <img src="background/Audrey.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
       <h3>Audrey Swart</h3>
-      <p>Water Mechanism lead</p>
+      <p>Microphone lead</p>
     </div>
 
     <div class="w3-quarter">
-      <img src="background/alex.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <img src="background/Sophia.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
       <h3>Sophia Decleene</h3>
-      <p>Microphone lead</p>
+      <p>Power Supplies lead</p>
     </div>
 
   </div>

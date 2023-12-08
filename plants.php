@@ -27,15 +27,9 @@
     <a href="home.php" class="w3-bar-item w3-button w3-theme-dark  "><i class="fa fa-home w3-margin-right"></i>Home</a>
     <!-- My plants tab -->
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-green">My Plants</a>
-    <!-- Setting drop down menu -->
-    <div class="w3-dropdown-hover w3-hide-small ">
-    <button class="w3-button " title="Notifications">Settings <i class="fa fa-caret-down"></i></button>
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-      <a href="water.html" class="w3-bar-item w3-button">Water Peferences</a>
-      <a href="help.html" class="w3-bar-item w3-button">Help</a>
-      <a href="blank.html" class="w3-bar-item w3-button">Profile</a>
-      <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
-    </div>
+    <a href="help.html" class="w3-bar-item w3-button">Help</a>
+    <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-theme-d1 w3-hover-dark w3-right">Log out</a>
+   
   </div>
 
  </div>
@@ -203,7 +197,8 @@
         <br>
         <br>
         <form method="POST" action="home.php">
-          <input type="submit" value="Submit" name="action" class="input" />
+
+          <input type="submit" value="Submit" name="action" class="input" onClick="myFunction()"/>
         </form>
       </br>
       <form method="POST" action="home.php">
@@ -302,6 +297,9 @@
   then close all select boxes:*/
   document.addEventListener("click", closeAllSelect);
 
+  function myFunction() {
+    window.location.href="home.php";  
+  } 
 </script>
 
 <?php
