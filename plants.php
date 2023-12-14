@@ -193,11 +193,14 @@
         
         <label for="image"><h3> Upload Image: </h3></label>
           <input type="file" style="color:white; font-size: 15px;" name="uploadfile" />
-
         <br>
         <br>
         <form method="POST" action="home.php">
-          <input type="submit" value="Submit" name="action" class="input" />      
+          <input type="submit" value="Submit" name="action" class="input" />
+        </form>
+      </br>
+        <form method="POST" action="home.php">
+          <input type="submit" value="Confirm update" name="action" class="input" />      
         </form>
       </br>
       <br>
