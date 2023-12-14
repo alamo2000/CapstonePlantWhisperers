@@ -157,7 +157,7 @@
       <!-- Water drop down menu -->
         <label for="water"><h3>Water Schedule:</h3> </label>
         <!--Error message when field isnt filled out  -->
-        <span class="msg"><?php if (isset($_POST['water_default'])) echo $water_msg ?></span>
+        <span class="msg"><?php if (empty($_POST['water_default'])) echo $water_msg ?></span>
 
         <div class="custom-select">
           <select name="water"  class="form-select">
@@ -197,13 +197,8 @@
         <br>
         <br>
         <form method="POST" action="home.php">
-
-          <input type="submit" value="Submit" name="action" class="input" onClick="myFunction()"/>
+          <input type="submit" value="Submit" name="action" class="input" />      
         </form>
-      </br>
-      <form method="POST" action="home.php">
-        <input type="submit" value="Confirm update" name="action" class="input" />      
-      </form>
       </br>
       <br>
       <br>
@@ -296,10 +291,6 @@
   /*if the user clicks anywhere outside the select box,
   then close all select boxes:*/
   document.addEventListener("click", closeAllSelect);
-
-  function myFunction() {
-    window.location.href="home.php";  
-  } 
 </script>
 
 <?php

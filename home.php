@@ -23,16 +23,6 @@
   {
 ?>
 
-
-<!-- Sidebar on click -->
-<nav class="w3-sidebar w3-bar-block w3-theme-d4 w3-card w3-animate-top w3-xxxlarge" style="display:none;z-index:2" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-display-topright w3-theme-d1">Close
-    <i class="fa fa-remove"></i>
-  </a>
-  <a href="plants.php" class="w3-bar-item w3-button">Add plant</a>
-
-</nav>
-
 <!-- Menu bar -->
 <div class="w3-top">
 <div class="w3-bar w3-xlarge w3-theme-d3 w3-left-align">
@@ -89,7 +79,7 @@
       <h4>How to get Started</h4>
     </header>
     <div class="w3-container">
-      <h5>Go to the My Plants tab<br>
+      <h5>Go to the <a href="plants.php">My Plants tab</a><br>
        > Fill out the information for you plant
         <br>
        > Then the plant will appear on your virtual green house on the home page <i class="fa fa-smile-o"></i></h5>
@@ -102,14 +92,14 @@
 
 
 <!-- Virtual Green House -->
-<div class="w3-row-padding w3-padding-64 w3-theme-d5" id="plants">
+<div class="w3-row-padding w3-padding-32 w3-theme-d5" id="plants">
 
   <div class="w3-quarter">
   <h2>MY PLANTS</h2>
   <br>
   <div class="welcome">
     <h4><b>Welcome to your <br> GreenHouse</b></h4>
-    <p> > Click status link to check real time sensor data </p>
+    <p> > Click status link to see real-time sensor data </p>
     <p> > To access the water button click status link </p>
   </div>
   <br> 
@@ -135,9 +125,9 @@
       <?php echo  $row['plant_type'] ?></h3>
 
       <h4 class="w3-opacity w3-center">
-     Nickname: <?php echo  $row['plant_name'] ?></h4>
+     <?php echo  $row['plant_name'] ?></h4>
      <hr class="rounded">
-     <p > <b> Check Plant Status:</b> </p>
+     <p> <b> Check Plant Status:</b> </p>
       
       <p> <a href="https://hosting.systemlinkcloud.io/webapps/dcd56321-430c-4d11-b529-765651aa9fde/content/ni-paths-NISHAREDDIR64/Web%20Server/htdocs/WebApp/index.html">Access sensors</a> <p>
       <hr class="rounded">
@@ -151,12 +141,12 @@
       <p> Water schedule = <?php echo  ($row['plant_water']) ?> </p>
       <br>
 
-      <form action="plants.php" method="post">
+      <!-- <form action="plants.php" method="post">
             <input type="submit" value="Update" name="action" class=" w3-button w3-theme-d1 w3-block" />
             <input type="hidden" name="plant_to_update" 
             value="<?php echo $row['plant_name'] ?>" 
             />                 
-      </form>
+      </form> -->
       <br>
       <form action="home.php" method="post">
         <input type="submit" value="Delete" name="action" class="w3-button w3-theme-d4 w3-block" />
@@ -171,11 +161,6 @@
 
  </div>
 
-<!-- Add button -->
-<div class="w3-container" style="position:absolute; right:0">
-  <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-theme-l3"
-  style="position:absolute;top:-28px;right:24px">+</a>
-</div>
 
 
 <!--Our Team Container -->
@@ -185,13 +170,13 @@
   <div class="w3-row"><br>
 
     <div class="w3-quarter">
-      <img src="background/Alexm.png" alt="Boss" style="width:45%; " class="w3-circle w3-hover-opacity">
+      <img src="background/Alex.png" alt="Boss" style="width:45%; " class="w3-circle w3-hover-opacity">
           <h3>Alex Morris</h3>
       <p>User Interface lead</p>
     </div>
 
     <div class="w3-quarter">
-      <img src="background/" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <img src="background/Kate.png" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
       <h3>Kate Van Meter</h3>
       <p>Embedded lead</p>
     </div>
@@ -203,7 +188,7 @@
     </div>
 
     <div class="w3-quarter">
-      <img src="background/Sophia.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
+      <img src="background/Sophia.jpg" alt="Boss" style="width:48%" class="w3-circle w3-hover-opacity">
       <h3>Sophia Decleene</h3>
       <p>Power Supplies lead</p>
     </div>
@@ -224,18 +209,6 @@
 
 
 <script>
-  // Script for side navigation
-  function w3_open() {
-    var x = document.getElementById("mySidebar");
-    x.style.width = "300px";
-    x.style.paddingTop = "10%";
-    x.style.display = "block";
-  }
-
-  // Close side navigation
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-  }
 
   // Used to toggle the menu on smaller screens when clicking on the menu button
   function openNav() {
